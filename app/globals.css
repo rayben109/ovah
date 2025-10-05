@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color palette to match OVAH brand colors */
+  --background: #fcfdfd;
+  --foreground: #182858;
+  --card: #fcfdfd;
+  --card-foreground: #182858;
+  --popover: #fcfdfd;
+  --popover-foreground: #182858;
+  --primary: #182858;
+  --primary-foreground: #fcfdfd;
+  --secondary: #5ebcde;
+  --secondary-foreground: #182858;
+  --muted: #e5cec2;
+  --muted-foreground: #182858;
+  --accent: #f16d2e;
+  --accent-foreground: #fcfdfd;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #e5cec2;
+  --input: #e5cec2;
+  --ring: #29a9df;
+  --chart-1: #29a9df;
+  --chart-2: #5ebcde;
+  --chart-3: #f16d2e;
+  --chart-4: #182858;
+  --chart-5: #e5cec2;
+  --radius: 0.625rem;
+  --sidebar: #fcfdfd;
+  --sidebar-foreground: #182858;
+  --sidebar-primary: #182858;
+  --sidebar-primary-foreground: #fcfdfd;
+  --sidebar-accent: #5ebcde;
+  --sidebar-accent-foreground: #182858;
+  --sidebar-border: #e5cec2;
+  --sidebar-ring: #29a9df;
+}
+
+.dark {
+  --background: #182858;
+  --foreground: #fcfdfd;
+  --card: #182858;
+  --card-foreground: #fcfdfd;
+  --popover: #182858;
+  --popover-foreground: #fcfdfd;
+  --primary: #fcfdfd;
+  --primary-foreground: #182858;
+  --secondary: #29a9df;
+  --secondary-foreground: #fcfdfd;
+  --muted: #5ebcde;
+  --muted-foreground: #fcfdfd;
+  --accent: #f16d2e;
+  --accent-foreground: #fcfdfd;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #29a9df;
+  --input: #29a9df;
+  --ring: #5ebcde;
+  --chart-1: #29a9df;
+  --chart-2: #5ebcde;
+  --chart-3: #f16d2e;
+  --chart-4: #fcfdfd;
+  --chart-5: #e5cec2;
+  --sidebar: #182858;
+  --sidebar-foreground: #fcfdfd;
+  --sidebar-primary: #29a9df;
+  --sidebar-primary-foreground: #fcfdfd;
+  --sidebar-accent: #5ebcde;
+  --sidebar-accent-foreground: #fcfdfd;
+  --sidebar-border: #29a9df;
+  --sidebar-ring: #5ebcde;
+}
+
+/* Updated font configuration for Inter */
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom gradient utilities for OVAH branding */
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #29a9df 0%, #5ebcde 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #29a9df 0%, #5ebcde 100%);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(135deg, #f16d2e 0%, #29a9df 100%);
+  }
+}
