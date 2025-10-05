@@ -20,7 +20,7 @@ export function AboutSection() {
           >
             <div className="aspect-[4/3] bg-muted rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/tanzanian-women-and-girls-in-a-community-meeting-d.jpg"
+                src="/ovah-tanzania.jpg"
                 alt="OVAH community empowerment session"
                 width={800}
                 height={600}

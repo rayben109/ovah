@@ -11,7 +11,7 @@ export function PartnersSection() {
       name: "We are Family Foundation",
       logo: "/we-are-family-foundation-logo.png",
     },
-    { name: "Women Fund Tanzania", logo: "/women-fund-tanzania-logo.jpg" },
+    { name: "Women Fund Tanzania", logo: "/women-trust-fund-tanzania.svg" },
     { name: "AWDF", logo: "/awdf-african-women-development-fund-logo.jpg" },
     { name: "Women Deliver", logo: "/women-deliver-logo.jpg" },
     {
