@@ -4,6 +4,9 @@ import { AboutHeroSection } from "@/components/about/about-hero-section"
 import { MissionVisionSection } from "@/components/about/mission-vision-section"
 import { ValuesSection } from "@/components/about/values-section"
 import { FocusAreasSection } from "@/components/about/focus-areas-section"
+import { FounderMessageSection } from "@/components/about/founder-message-section"
+import { TeamSection } from "@/components/about/team-section"
+import { BoardMembersSection } from "@/components/about/board-member-section"
 
 export default function AboutPage() {
   return (
@@ -12,9 +15,12 @@ export default function AboutPage() {
       <main>
         <AboutHeroSection />
         <MissionVisionSection />
+        <FounderMessageSection />
         <ValuesSection />
         <FocusAreasSection />
-      </main>
+        <TeamSection />
+        <BoardMembersSection />
+      </main> 
       <Footer />
     </div>
   )
