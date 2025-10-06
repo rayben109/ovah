@@ -11,12 +11,12 @@ export function Navigation() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About Us", href: "/about" },
     { name: "Our Work", href: "/our-work" },
-    { name: "Approaches", href: "/approaches" },
-    { name: "Blog", href: "/blog" },
+    /* { name: "Blog", href: "/blog" }, */
     { name: "Events", href: "/events" },
     { name: "Contact Us", href: "/contact" },
+    { name: "Report", href: "/report" },
   ]
 
   return (
