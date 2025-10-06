@@ -1,116 +1,108 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 
-interface SDGItem {
-  number: string
-  title: string
-  color: string
-  image?: string
-}
+const sdgs = [
+  {
+    number: "5",
+    title: "Gender Equality",
+    color: "#FF3A21",
+    imageUrl: "images/sdgs/E-WEB-Goal-05.png",
+  },
+  {
+    number: "3",
+    title: "Good Health and Well-being",
+    color: "#4C9F38",
+    imageUrl: "images/sdgs/E-WEB-Goal-03.png",
+  },
+  {
+    number: "8",
+    title: "Decent Work and Economic Growth",
+    color: "#A21942",
+    imageUrl: "images/sdgs/E-WEB-Goal-08.png",
+  },
+  {
+    number: "11",
+    title: "Sustainable Cities and Communities",
+    color: "#FD9D24",
+    imageUrl: "images/sdgs/E-WEB-Goal-11.png",
+  },
+]
 
-interface SDGComponentProps {
-  sdgs: SDGItem[]
-  title?: string
-  subtitle?: string
-  variant?: "horizontal" | "grid"
-  className?: string
-}
-
-export function SDGComponent({
-  sdgs,
-  title = "Sustainable Development Goals",
-  subtitle = "Our work contributes to achieving these global goals",
-  variant = "horizontal",
-  className = "",
-}: SDGComponentProps) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
+export function SDGComponent() {
   return (
-    <section className={`py-16 ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section className="py-20 bg-[#FCFDFD] relative overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-secondary/5 to-white opacity-60 pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="text-center space-y-4 mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            <span className="gradient-text">{title}</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#182858] mb-6 text-balance">
+            Sustainable Development Goals
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">{subtitle}</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed">
+            Our work directly contributes to achieving the United Nations
+            Sustainable Development Goals, creating measurable impact for
+            communities across Tanzania.
+          </p>
         </motion.div>
 
-        {/* SDG Items */}
-        <motion.div
-          className={`${
-            variant === "grid" ? "grid grid-cols-2 md:grid-cols-4 gap-6" : "flex flex-wrap justify-center gap-6"
-          }`}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        {/* SDG Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto items-stretch">
           {sdgs.map((sdg, index) => (
             <motion.div
               key={sdg.number}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              className="group cursor-pointer"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, rotate: 0.5 }}
             >
-              <div className="relative">
-                {sdg.image ? (
-                  <div className="w-24 h-24 mx-auto mb-3 relative overflow-hidden rounded-full border-4 border-white shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <Image
-                      src={sdg.image || "/placeholder.svg"}
-                      alt={`SDG ${sdg.number}: ${sdg.title}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="w-24 h-24 mx-auto mb-3 rounded-full border-4 border-white shadow-lg group-hover:shadow-xl transition-all duration-300 flex items-center justify-center"
-                    style={{ backgroundColor: sdg.color }}
+              <Card
+                className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl rounded-2xl transition-all duration-500 h-full flex flex-col"
+                style={{
+                  background: `linear-gradient(135deg, ${sdg.color}15, white)`,
+                }}
+              >
+                <CardContent className="p-8 flex flex-col items-center justify-between flex-1 relative z-10">
+                  <motion.div
+                    className="w-32 h-32 relative mb-6"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <span className="text-white font-bold text-lg">{sdg.number}</span>
-                  </div>
-                )}
+                    <Image
+                      src={sdg.imageUrl}
+                      alt={`SDG ${sdg.number} - ${sdg.title}`}
+                      fill
+                      style={{ objectFit: "contain" }}
+                    />
+                  </motion.div>
+                  <h3 className="text-lg font-bold text-[#182858] text-center">
+                    {sdg.title}
+                  </h3>
+                </CardContent>
 
-                {/* Hover overlay with title */}
-                <div className="absolute inset-0 bg-black/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-white text-xs font-medium text-center px-2">{sdg.title}</p>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <p className="text-sm font-semibold text-foreground">SDG {sdg.number}</p>
-              </div>
+                {/* Floating color accent */}
+                <motion.div
+                  className="absolute bottom-0 right-0 w-24 h-24 rounded-tl-full opacity-10"
+                  style={{ backgroundColor: sdg.color }}
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                />
+              </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

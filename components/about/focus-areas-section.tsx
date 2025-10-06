@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Shield, Users, Crown, Heart } from "lucide-react"
+import { SDGComponent } from "../ui/sdg-component"
 
 export function FocusAreasSection() {
   const focusAreas = [
@@ -35,12 +36,7 @@ export function FocusAreasSection() {
     },
   ]
 
-  const sdgs = [
-    { number: "3", title: "Good Health and Well-being", color: "bg-green-500" },
-    { number: "5", title: "Gender Equality", color: "bg-red-500" },
-    { number: "6", title: "Quality Education", color: "bg-blue-500" },
-    { number: "11", title: "Sustainable Cities and Communities", color: "bg-orange-500" },
-  ]
+
 
   return (
     <section className="py-20 bg-background">
@@ -93,24 +89,7 @@ export function FocusAreasSection() {
         </div>
 
         {/* SDGs Section */}
-        <div className="text-center space-y-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-            Supporting <span className="gradient-text">UN Sustainable Development Goals</span>
-          </h3>
-
-          <div className="flex flex-wrap justify-center gap-8">
-            {sdgs.map((sdg) => (
-              <div key={sdg.number} className="group cursor-pointer text-center">
-                <div
-                  className={`w-24 h-24 rounded-full ${sdg.color} flex items-center justify-center text-white font-bold text-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 mx-auto mb-3`}
-                >
-                  {sdg.number}
-                </div>
-                <p className="text-sm text-muted-foreground font-medium max-w-24">{sdg.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <SDGComponent/>
       </div>
     </section>
   )
