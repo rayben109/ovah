@@ -8,7 +8,7 @@ export function BoardMembersSection() {
        {
          name: "Carolyne Ekyarisiima",
          role: "Chairperson",
-         bio: "Leads OVAH’s strategic vision and ensures governance and accountability.",
+         bio: "Leads OVAH's strategic vision and ensures governance and accountability.",
          imageUrl: "/images/board/fatima.jpg",
          linkedin: "https://linkedin.com/in/fatima-hassan",
        },

@@ -12,7 +12,7 @@ export function HeroSection() {
   const images = [
     "/ovah-staff.jpg",
     "/students-perfoming.JPG",
-    "/jamii-salama-initiative-daladala.jpg",
+    "/pbi-group-photo.jpg",
   ]
   const [index, setIndex] = useState(0)
 
