@@ -5,45 +5,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, Clock, Users, ExternalLink } from "lucide-react"
 
-const upcomingEvents = [
-  {
-    title: "International Women's Day 2025 Celebration",
-    description:
-      "Join us for a special celebration highlighting women's achievements and discussing the path forward for gender equality in Tanzania.",
-    date: "March 8, 2025",
-    time: "9:00 AM - 4:00 PM",
-    location: "Dar es Salaam Community Center",
-    attendees: "200+ expected",
-    type: "Celebration",
-    featured: true,
-  },
-  {
-    title: "SafetYetu Self-Defense Workshop Series",
-    description:
-      "Monthly self-defense training sessions teaching Karate-Judo techniques, assertiveness, and boundary-setting for women and girls.",
-    date: "Every 2nd Saturday",
-    time: "10:00 AM - 2:00 PM",
-    location: "OVAH Training Center",
-    attendees: "25 participants per session",
-    type: "Workshop",
-    featured: false,
-  },
-  {
-    title: "Community Dialogue on SGBV Prevention",
-    description:
-      "Engaging community leaders, parents, and youth in conversations about preventing sexual and gender-based violence.",
-    date: "February 15, 2025",
-    time: "2:00 PM - 5:00 PM",
-    location: "Mwananyamala Community Hall",
-    attendees: "100+ community members",
-    type: "Dialogue",
-    featured: false,
-  },
-]
+import { upcomingEvents } from "@/data/events"
 
 export function UpcomingEventsSection() {
   return (
-    <section className="py-20 bg-[#FCFDFD]">
+    <section id="upcoming-events" className="py-20 bg-[#FCFDFD]">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -52,9 +18,12 @@ export function UpcomingEventsSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#182858] mb-6 text-balance">Upcoming Events</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#182858] mb-6 text-balance">
+            Upcoming Events
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed">
-            Be part of the change. Join our upcoming events and help us build a gender-just and violence-free society.
+            Be part of the change. Join our upcoming events and help us build a
+            gender-just and violence-free society.
           </p>
         </motion.div>
 
@@ -69,7 +38,9 @@ export function UpcomingEventsSection() {
               className={event.featured ? "lg:col-span-2" : ""}
             >
               <Card
-                className={`h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white ${event.featured ? "border-l-4 border-l-[#F16D2E]" : ""}`}
+                className={`h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white ${
+                  event.featured ? "border-l-4 border-l-[#F16D2E]" : ""
+                }`}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
@@ -86,12 +57,16 @@ export function UpcomingEventsSection() {
                   </div>
 
                   <h3
-                    className={`font-bold text-[#182858] mb-3 text-pretty ${event.featured ? "text-2xl" : "text-xl"}`}
+                    className={`font-bold text-[#182858] mb-3 text-pretty ${
+                      event.featured ? "text-2xl" : "text-xl"
+                    }`}
                   >
                     {event.title}
                   </h3>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed text-pretty">{event.description}</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-pretty">
+                    {event.description}
+                  </p>
 
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
                     <div className="flex items-center gap-2 text-gray-600">
@@ -113,13 +88,24 @@ export function UpcomingEventsSection() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Button className="bg-[#F16D2E] hover:bg-[#F16D2E]/90 text-white flex-1">Register Now</Button>
-                    <Button
-                      variant="outline"
-                      className="border-[#29A9DF] text-[#29A9DF] hover:bg-[#29A9DF] hover:text-white bg-transparent"
+                    <a
+                      href={event.registerLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
                     >
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
+                      <Button className="bg-[#F16D2E] hover:bg-[#F16D2E]/90 text-white w-full">
+                        Register Now
+                      </Button>
+                    </a>
+                    <a href={event.detailsLink}>
+                      <Button
+                        variant="outline"
+                        className="border-[#29A9DF] text-[#29A9DF] hover:bg-[#29A9DF] hover:text-white bg-transparent"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
