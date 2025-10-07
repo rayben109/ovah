@@ -11,6 +11,8 @@ import { motion } from "framer-motion"
 
 export default function EventDetails({ params }: { params: { slug: string } }) {
   const event = upcomingEvents.find((e) => e.slug === params.slug)
+  
+  
 
   if (!event) return notFound()
 

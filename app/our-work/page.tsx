@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 import { WorkHeroSection } from "@/components/work/work-hero-section"
 import { ProgramsSection } from "@/components/work/programs-section"
 import { FocusAreasSection } from "@/components/work/focus-areas-section"
-import { SDGComponent } from "@/components/ui/sdg-component"
+import { ImpactSection } from "@/components/impact-section"
 
 export default function OurWorkPage() {
   return (
@@ -13,7 +13,7 @@ export default function OurWorkPage() {
         <WorkHeroSection />
         <FocusAreasSection />
         <ProgramsSection />
-        <SDGComponent />
+        <ImpactSection />
       </main>
       <Footer />
     </div>
