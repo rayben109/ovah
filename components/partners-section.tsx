@@ -6,17 +6,23 @@ import { Download, ExternalLink } from "lucide-react"
 
 export function PartnersSection() {
   const partners = [
-    { name: "Mastercard Foundation", logo: "/mastercard-foundation-logo.png" },
+    {
+      name: "Mastercard Foundation",
+      logo: "/images/partners/mastercard-foundation-logo.png",
+    },
     {
       name: "We are Family Foundation",
-      logo: "/we-are-family-foundation-logo.png",
+      logo: "/images/partners/we-are-family-foundation-logo.png",
     },
-    { name: "Women Fund Tanzania", logo: "/women-trust-fund-tanzania.svg" },
-    { name: "AWDF", logo: "/awdf-african-women-development-fund-logo.jpg" },
-    { name: "Women Deliver", logo: "/women-deliver-logo.jpg" },
+    {
+      name: "Women Fund Tanzania",
+      logo: "/images/partners/women-trust-fund-tanzania.svg",
+    },
+    { name: "AWDF", logo: "/images/partners/awdf.png" },
+    { name: "Women Deliver", logo: "/images/partners/women-deliver.svg" },
     {
       name: "Australian High Commission",
-      logo: "/australian-high-commission-logo.jpeg",
+      logo: "/images/partners/australian-high-commission-logo.jpeg",
     },
   ]
 
