@@ -22,15 +22,15 @@ export function TeamSection() {
       imageUrl: "/images/team/asha.jpg",
       linkedin: "https://linkedin.com/in/asha-mwakyusa",
     },
-    {
+    /*{
       name: "Vivian",
       role: "Communications & Advocacy Officer",
       bio: "Drives advocacy campaigns and ensures OVAH’s voice reaches all key stakeholders.",
       imageUrl: "/images/team/hussein.jpg",
       linkedin: "https://linkedin.com/in/hussein-omari",
-    },
+    }, */
     {
-      name: "Fatuma Juma",
+      name: "Fatma Abbas",
       role: "Finance & Admin Officer",
       bio: "Manages financial planning, reporting, and organizational administration.",
       imageUrl: "/images/team/fatuma.jpg",

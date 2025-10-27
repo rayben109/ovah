@@ -44,7 +44,7 @@ export function HeroSection() {
       ))}
 
       {/* Gradient Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-secondary/80 to-muted/60" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-accent/40 to-accent/60" />
 
       {/* Optional blurred glowing shapes */}
       <div className="absolute inset-0 opacity-10">

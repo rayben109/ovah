@@ -76,12 +76,12 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                <Card className="border-l-4 border-l-primary bg-primary/5">
+                <Card className="border-l-4 border-l-secondary bg-secondary/5">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-3">
-                      <Heart className="h-8 w-8 text-primary" />
+                      <Heart className="h-8 w-8 text-secondary" />
                       <div>
-                        <h3 className="font-semibold text-foreground">Survivor-Centered</h3>
+                        <h3 className="font-semibold text-secondary">Survivor-Centered</h3>
                         <p className="text-sm text-muted-foreground">Putting survivors first in all our programs</p>
                       </div>
                     </div>
@@ -90,12 +90,12 @@ export function AboutSection() {
               </motion.div>
 
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                <Card className="border-l-4 border-l-secondary bg-secondary/5">
+                <Card className="border-l-4 border-l-accent bg-accent/5">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-3">
-                      <Shield className="h-8 w-8 text-secondary" />
+                      <Shield className="h-8 w-8 text-accent" />
                       <div>
-                        <h3 className="font-semibold text-foreground">Community-Based</h3>
+                        <h3 className="font-semibold text-accent">Community-Based</h3>
                         <p className="text-sm text-muted-foreground">Working within communities for lasting change</p>
                       </div>
                     </div>
