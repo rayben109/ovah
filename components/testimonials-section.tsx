@@ -12,12 +12,12 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      name: "Dennis Edga",
+      name: "Dennis Edgar",
       role: "Empowering Mind Participant",
       content:
         "These training sessions have shown me that no matter what happens to you as a victim, you should not hesitate to speak up. It's important to share your experiences with people you trust.",
       program: "Empowering Mind Program",
-      image: "/young-tanzanian-man-smiling-portrait.jpg",
+      image: "/images/testimonies/Denis-Edgar.jpg",
     },
     {
       name: "Madam Khadija",
@@ -25,7 +25,7 @@ export function TestimonialsSection() {
       content:
         "Before we attended the Teachers to Mentors training, many of us didn't have the skills to recognize or address signs of sexual and gender-based violence among our students. We were often unsure of how to intervene effectively or collaborate with others to resolve such cases.",
       program: "Teachers to Mentors",
-      image: "/tanzanian-female-teacher-professional-portrait.jpg",
+      image: "/images/testimonies/Madam-Khadija.png",
     },
     {
       name: "Othman",
@@ -33,7 +33,7 @@ export function TestimonialsSection() {
       content:
         "Kituo hiki kinafikiwa na watu zaidi ya 800 kwa siku poster hizi zitamuokoa binti namama ambae hawezi kujitetea dhidi ya unyanyasaji wa kijinsia. (This bus station serves more than 800 people a day. These posters will help save a girl or a woman who cannot defend herself against gender-based harassment.)",
       program: "Jamii Salama Initiative",
-      image: "/tanzanian-bus-driver-uniform-portrait.jpg",
+      image: "/images/testimonies/Othman.jpg",
     },
     {
       name: "Madam Eda",
@@ -41,7 +41,7 @@ export function TestimonialsSection() {
       content:
         "During the training, Ms. Veronika Buchumi gave us practical advice that changed everything. She emphasized the importance of following proper legal channels, not just to protect the students but also to safeguard ourselves as teachers. This program has bridged the gap between schools and the legal system, making it possible to protect our students without compromising our own safety.",
       program: "Elimika na Mwajuma & Teachers to Mentors",
-      image: "/experienced-tanzanian-female-teacher-portrait.jpg",
+      image: "/images/testimonies/Madam-Eda.png",
     },
   ]
 

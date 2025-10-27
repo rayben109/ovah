@@ -27,17 +27,12 @@ export function PartnersSection() {
   ]
 
   const reports = [
-    {
-      title: "Annual Report 2024",
-      description: "Our comprehensive impact report for 2024",
-      type: "Annual Report",
-      url: "#",
-    },
+    
     {
       title: "Annual Report 2023",
       description: "Detailed overview of our 2023 achievements",
       type: "Annual Report",
-      url: "#",
+      url: "/reports/OVAH-Annual-Report-2023.pdf",
     },
     {
       title: "Annual Report 2022",
@@ -49,13 +44,13 @@ export function PartnersSection() {
       title: "Jamii Salama Initiative Report",
       description: "Comprehensive evaluation of our public safety program",
       type: "Project Report",
-      url: "#",
+      url: "/reports/JSI-Progress-and-Impact-Report-2024.pdf",
     },
     {
-      title: "Teachers to Mentors Report",
+      title: "Elimika Na Mwajuma Impact Report",
       description: "Impact assessment of our educational intervention program",
       type: "Project Report",
-      url: "#",
+      url: "/reports/ELIMIKA-NA-MWAJUMA-IMPACT-REPORT.pdf",
     },
   ]
 
@@ -97,7 +92,7 @@ export function PartnersSection() {
         <div>
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              <span className="gradient-text">Reports</span> & Documentation
+              <span className="gradient-text font-nunito">Reports</span> & Documentation
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
               Access our comprehensive reports and documentation showcasing our impact and methodologies.

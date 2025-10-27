@@ -51,7 +51,7 @@ export function ApproachesSection() {
   }
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-muted/30 brush-stroke">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center space-y-4 mb-16"
@@ -60,8 +60,8 @@ export function ApproachesSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Our <span className="gradient-text">Approaches</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-nunito">
+            Our <span className="gradient-orange-text">Approaches</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
             We tackle sexual and gender-based violence through three
@@ -94,7 +94,7 @@ export function ApproachesSection() {
                   transition={{ duration: 0.3 }}
                   className="flex-1"
                 >
-                  <Card className="group border-2 hover:border-primary/20 transition-all duration-300 bg-background h-full flex flex-col">
+                  <Card className="group border-2 border-accent/20 hover:border-accent/40 transition-all duration-300 bg-background h-full flex flex-col">
                     <CardHeader className="text-center pb-4">
                       <motion.div
                         className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${
@@ -109,7 +109,7 @@ export function ApproachesSection() {
                       >
                         <Icon className="h-8 w-8" aria-hidden="true" />
                       </motion.div>
-                      <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+                      <CardTitle className="text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-200">
                         {approach.title}
                       </CardTitle>
                     </CardHeader>

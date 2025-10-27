@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -141,5 +142,90 @@
 
   .gradient-cta {
     background: linear-gradient(135deg, #f16d2e 0%, #29a9df 100%);
+  }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, #f16d2e 0%, #ff8c42 100%);
+  }
+
+  .gradient-orange-text {
+    background: linear-gradient(135deg, #f16d2e 0%, #ff8c42 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .orange-accent {
+    color: #f16d2e;
+  }
+
+  .orange-bg {
+    background-color: #f16d2e;
+  }
+
+  .orange-border {
+    border-color: #f16d2e;
+  }
+
+  /* Brush effect for section tops */
+  .brush-stroke {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brush-stroke::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #f16d2e,
+      #29a9df,
+      transparent
+    );
+    animation: brush-sweep 3s ease-in-out infinite;
+  }
+
+  @keyframes brush-sweep {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+
+  /* Animated contour lines */
+  .contour-line {
+    position: relative;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(241, 109, 46, 0.1) 50%,
+      transparent 70%
+    );
+    background-size: 20px 20px;
+    animation: contour-move 4s linear infinite;
+  }
+
+  @keyframes contour-move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 20px 20px;
+    }
+  }
+
+  /* Nunito font utility */
+  .font-nunito {
+    font-family: "Nunito", sans-serif;
   }
 }
