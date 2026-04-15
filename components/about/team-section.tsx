@@ -10,31 +10,34 @@ export function TeamSection() {
   const teamMembers = [
     {
       name: "Modesta Joseph",
-      role: "Founder & Executive Director",
-      bio: "Passionate about empowering women and youth through technology and digital transformation.",
-      imageUrl: "/images/team/modesta.jpg",
-      linkedin: "https://linkedin.com/in/raymondluanda",
+      role: "Founder & Executive Director", 
+      imageUrl: "/images/team/modesta-joseph-founder.jpg",
+      linkedin: "https://linkedin.com/in/modestajoseph",
     },
     {
       name: "Teddy John",
-      role: "Programs & Operations Lead",
-      bio: "Leads program implementation and community engagement across Tanzania.",
-      imageUrl: "/images/team/asha.jpg",
-      linkedin: "https://linkedin.com/in/asha-mwakyusa",
+      role: "Projects Manager",
+      imageUrl: "/images/team/teddy-john-pm.jpg",
+      linkedin: "https://linkedin.com/in/",
     },
-    /*{
-      name: "Vivian",
-      role: "Communications & Advocacy Officer",
-      bio: "Drives advocacy campaigns and ensures OVAH’s voice reaches all key stakeholders.",
-      imageUrl: "/images/team/hussein.jpg",
-      linkedin: "https://linkedin.com/in/hussein-omari",
-    }, */
     {
-      name: "Fatma Abbas",
-      role: "Finance & Admin Officer",
-      bio: "Manages financial planning, reporting, and organizational administration.",
-      imageUrl: "/images/team/fatuma.jpg",
-      linkedin: "https://linkedin.com/in/fatuma-juma",
+      name: "Carina Wolfram",
+      role: "MEL Manager",
+      imageUrl: "/images/team/placeholder.jpg",
+      linkedin: "https://linkedin.com/in/",
+    },
+    {
+      name: "Jacqueline Octavian",
+      role: "Comms and Advocacy Officer",
+      
+      imageUrl: "/images/team/jacqueline-octavian-comms.jpg",
+      linkedin: "https://linkedin.com/in/",
+    },
+    {
+      name: "Alfred Rabson",
+      role: "Finance Officer",
+      imageUrl: "/images/team/alfred-rabson-finance.jpg",
+      linkedin: "https://linkedin.com/in/",
     },
   ]
 
@@ -93,7 +96,7 @@ export function TeamSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
               {teamMembers.map((member, i) => (
                 <motion.div

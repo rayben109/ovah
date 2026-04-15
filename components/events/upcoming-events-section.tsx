@@ -95,7 +95,7 @@ export function UpcomingEventsSection() {
                       className="flex-1"
                     >
                       <Button className="bg-[#F16D2E] hover:bg-[#F16D2E]/90 text-white w-full">
-                        Register Now
+                        Explore More
                       </Button>
                     </a>
                     <a href={event.detailsLink}>

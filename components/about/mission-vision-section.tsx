@@ -14,11 +14,17 @@ export function MissionVisionSection() {
               <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Eye className="h-8 w-8 text-primary" />
               </div>
-              <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">Our Vision</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">
+                Our Vision
+              </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-                To create a <span className="font-semibold text-primary">gender-just and violence-free society</span>.
+                To create a{" "}
+                <span className="font-semibold text-primary">
+                  gender-just and violence-free society
+                </span>
+                .
               </p>
             </CardContent>
           </Card>
@@ -29,13 +35,16 @@ export function MissionVisionSection() {
               <div className="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4">
                 <Target className="h-8 w-8 text-secondary" />
               </div>
-              <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">Our Mission</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">
+                Our Mission
+              </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-                Our mission is to <span className="font-semibold text-secondary">protect and empower</span> women,
-                youth, girls, and children by combating sexual violence and advancing their rights across social,
-                economic, and environmental domains.
+               OVAH's mission is to end sexual and gender-based violence
+                and create safer communities through awareness and advocacy,
+                empowerment, movement-building and leverage innovation, to
+                advance the rights and well-being of women, children and youth.
               </p>
             </CardContent>
           </Card>

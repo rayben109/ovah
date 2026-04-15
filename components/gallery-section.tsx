@@ -10,9 +10,9 @@ export function GallerySection() {
 
   const galleryImages = [
     "/images/gallery/3G0B6142-2.jpg",
-    "/images/gallery/3G0B6148-2.jpg",
-    "/images/gallery/3G0B6220-2.jpg",
     "/images/gallery/3G0B6234-2.jpg",
+    "/images/gallery/3G0B6220-2.jpg",
+    "/images/gallery/PBI_Girls.png",
     "/images/gallery/Final day of driving school .jpg",
     "/images/gallery/IMG_6504_(1).jpg",
     "/images/gallery/secindary school sexual harassment-14.jpg",

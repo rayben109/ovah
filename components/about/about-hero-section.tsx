@@ -18,7 +18,7 @@ export function AboutHeroSection() {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                 Our Voices Against Harassment (OVAH) is a youth- and women-led
-                NGO in Tanzania, established in November 2020 and formally
+                NGO in Tanzania, established in 2020 and formally
                 registered in 2021. We are dedicated to ending sexual and
                 gender-based violence (SGBV) and advancing gender equality by
                 empowering adolescents and women, particularly those from
@@ -40,7 +40,7 @@ export function AboutHeroSection() {
                 <CardContent className="p-4 text-center">
                   <Users className="h-8 w-8 text-secondary mx-auto mb-2" />
                   <h3 className="text-2xl font-bold text-secondary">
-                    Youth-Led
+                    Women-Led
                   </h3>
                   <p className="text-sm text-muted-foreground">Organization</p>
                 </CardContent>

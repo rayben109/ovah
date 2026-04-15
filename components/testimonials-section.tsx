@@ -43,6 +43,22 @@ export function TestimonialsSection() {
       program: "Elimika na Mwajuma & Teachers to Mentors",
       image: "/images/testimonies/Madam-Eda.png",
     },
+    {
+      name: "Jackline Ringo",
+      role: "PBI Woman Driver",
+      content:
+        "Before joining the Pink Bajaji Initiative, I struggled with unstable income and depended on my parents for most of my needs. Today, I earn a steady income that allows me to support my family, clear my debts, and even provide health insurance for my mother. Through this opportunity, I have not only changed my financial situation, but also grown in confidence and independence. Representing Tanzania at a regional conference in Kenya showed me that my voice and experience matter. I am proud to be part of a movement where women are proving that we belong in every space, including transport",
+      program: "Pink Bajaji Initiative ",
+      image: "/images/testimonies/Jackline-Ringo.jpg",
+    },
+    {
+      name: "Amina Omary",
+      role: "PBI Woman Driver",
+      content:
+        "This opportunity has changed my life. I now have a stable income that allows me to take care of my daughter and meet our daily needs with dignity.Before, it was difficult to contribute at home, but today I am a provider and a decision-maker in my household. I feel valued, confident, and proud of the work I do. Through the Pink Bajaji Initiative, I am not only earning an income, I am building a better future for my child and showing other women that change is possible.",
+      program: "Pink Bajaji Initiative ",
+      image: "/images/testimonies/Amina-Omary.png",
+    },
   ]
 
   const nextTestimonial = () => {

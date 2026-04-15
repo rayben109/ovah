@@ -92,11 +92,12 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Join us in empowering girls and women, supporting survivors, and
-              transforming communities through advocacy, education, and safe
-              spaces. We strive to build a society where every girl and woman
-              can live free from violence, exercise her rights, and reach her
-              full potential.
+              Join us in ending sexual and gender-based violence and create
+              safer communities through awareness and advocacy, empowerment,
+              movement-building and leverage innovation, to advance the rights
+              and well-being of women, children and youth. We strive to build a
+              society where every girl and woman can live free from violence,
+              exercise her rights, and reach her full potential.
             </motion.p>
           </motion.div>
 

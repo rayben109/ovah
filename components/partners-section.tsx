@@ -11,6 +11,10 @@ export function PartnersSection() {
       logo: "/images/partners/mastercard-foundation-logo.png",
     },
     {
+      name: "Amplify Change",
+      logo: "/images/partners/amplify-change.svg",
+    },
+    {
       name: "We are Family Foundation",
       logo: "/images/partners/we-are-family-foundation-logo.png",
     },
@@ -27,7 +31,12 @@ export function PartnersSection() {
   ]
 
   const reports = [
-    
+    {
+      title: "Annual Report 2022",
+      description: "Our foundational year impact summary",
+      type: "Annual Report",
+       url: "/reports/OVAH-Annual-Report-2022.pdf",
+    },
     {
       title: "Annual Report 2023",
       description: "Detailed overview of our 2023 achievements",
@@ -35,22 +44,10 @@ export function PartnersSection() {
       url: "/reports/OVAH-Annual-Report-2023.pdf",
     },
     {
-      title: "Annual Report 2022",
+      title: "Annual Report 2024",
       description: "Our foundational year impact summary",
       type: "Annual Report",
-      url: "#",
-    },
-    {
-      title: "Jamii Salama Initiative Report",
-      description: "Comprehensive evaluation of our public safety program",
-      type: "Project Report",
-      url: "/reports/JSI-Progress-and-Impact-Report-2024.pdf",
-    },
-    {
-      title: "Elimika Na Mwajuma Impact Report",
-      description: "Impact assessment of our educational intervention program",
-      type: "Project Report",
-      url: "/reports/ELIMIKA-NA-MWAJUMA-IMPACT-REPORT.pdf",
+      url: "/reports/OVAH-Annual-Report-2024.pdf",
     },
   ]
 

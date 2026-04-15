@@ -1,56 +1,32 @@
 export const upcomingEvents = [
   {
-    title: "International Women's Day 2025 Celebration",
-    slug: "international-womens-day-2025",
+    title:
+      "Gender Responsive Journalism training focused on ethical reporting and Storytelling on SGBV",
+    slug: "gender-responsive-journalism-training-focused-on-ethical-reporting-and-storytelling-on-sgbv",
     description:
-      "Join us for a special celebration highlighting women's achievements and discussing the path forward for gender equality in Tanzania.",
-    date: "March 8, 2025",
-    time: "9:00 AM - 4:00 PM",
-    location: "Dar es Salaam Community Center",
-    attendees: "200+ expected",
-    type: "Celebration",
+      "The Gender-Responsive Journalism Training focuses on strengthening media capacity to report on Sexual and Gender-Based Violence (SGBV) in an ethical, sensitive, and survivor-centered manner. It equips journalists with the knowledge and skills to tell stories that uphold dignity, avoid harm, and challenge harmful stereotypes, while amplifying the voices of survivors responsibly. The training emphasizes accuracy, confidentiality, and the importance of framing narratives in ways that contribute to awareness, accountability, and positive social change.",
+    date: "April 10, 2026",
+    time: "9:00 AM - 11:00 AM",
+    location:
+      "Saifee Mansion,2nd Floor,next to Raha Tower,Bibititi street,near corner of Azikiwe street, Dar es Salaam",
+    attendees:
+      "15 Journalists (From Television,Radio, Newspapers and Online Platforms)",
+    type: "Training",
     featured: true,
-    registerLink: "https://forms.gle/your-google-form-id",
-    detailsLink: "/events/international-womens-day-2025",
-  },
-  {
-    title: "SafetYetu Self-Defense Workshop Series",
-    slug: "safetyetu-self-defense-workshop",
-    description:
-      "Monthly self-defense training sessions teaching Karate-Judo techniques, assertiveness, and boundary-setting for women and girls.",
-    date: "Every 2nd Saturday",
-    time: "10:00 AM - 2:00 PM",
-    location: "OVAH Training Center",
-    attendees: "25 participants per session",
-    type: "Workshop",
-    featured: false,
-    registerLink: "https://forms.gle/your-google-form-id",
-    detailsLink: "/events/safetyetu-self-defense-workshop",
-  },
-  {
-    title: "Community Dialogue on SGBV Prevention",
-    slug: "community-dialogue-sgbv-prevention",
-    description:
-      "Engaging community leaders, parents, and youth in conversations about preventing sexual and gender-based violence.",
-    date: "February 15, 2025",
-    time: "2:00 PM - 5:00 PM",
-    location: "Mwananyamala Community Hall",
-    attendees: "100+ community members",
-    type: "Dialogue",
-    featured: false,
-    registerLink: "https://forms.gle/your-google-form-id",
-    detailsLink: "/events/community-dialogue-sgbv-prevention",
+    registerLink: "https://instagram.com/ovahtanzania",
+    detailsLink:
+      "/events/gender-responsive-journalism-training-focused-on-ethical-reporting-and-storytelling-on-sgbv",
   },
 ]
 
 export const pastEvents = [
   {
-    title: "International Day of the Girl Child 2024",
+    title: "JAMII SALAMA INITIATIVE (JSI) Partners First Quarter Meeting",
     description:
-      "Commemorated with storytelling presentations and awards under the theme 'Girls' Vision for the Future' with 25 students from 5 schools.",
-    date: "October 12, 2024",
-    location: "OVAH Community Center",
-    attendees: "45 participants",
+      "The Jamii Salama Initiative (JSI) is a collaborative effort by women's rights organizations and other stakeholders in Tanzania. Its primary objective is to create safer public spaces by challenging the normalization of sexual harassment, changing mindsets and attitudes, and advocating for policies that promote a safer environment for women and girls. The Jamii Salama Initiative (JSI) convened its first quarterly meeting  which brought together old JSI partners, and welcomed onboard the new JSI 12 partners who are committed to creating safer public spaces across Tanzania. The meeting served as a powerful platform to reflect on progress, share insights, and collectively shape the way forward. With growing momentum and renewed energy, this gathering reaffirmed a shared commitment to challenging harmful social norms, strengthening partnerships, and driving sustainable change in communities.",
+    date: "Friday, 27th March 2026",
+    location: "CDEA- Eco Sanaa Hub,Mbezi Beach A, Dar es Salaam",
+    attendees: "20 participants",
     impact: "25 students engaged in storytelling competition",
     image: "/girl-child-day-2024-event.jpg",
     gallery: [
@@ -59,18 +35,5 @@ export const pastEvents = [
       "/girl-child-day-2024-3.jpg",
     ],
     reportUrl: "/reports/girl-child-day-2024.pdf",
-  },
-  {
-    title: "16 Days of Activism Against GBV 2024",
-    description:
-      "Launched awareness campaign under 'Towards Beijing +30: UNiTE to End Violence Against Women and Girls' with community outreach.",
-    date: "Nov 25 - Dec 10, 2024",
-    location: "Multiple locations across Dar es Salaam",
-    attendees: "100+ public workers reached",
-    impact:
-      "Distributed anti-harassment materials and conducted educational sessions",
-    image: "/16-days-activism-launch.jpg",
-    gallery: ["/16days-2024-1.jpg", "/16days-2024-2.jpg", "/16days-2024-3.jpg"],
-    reportUrl: "/reports/16-days-activism-2024.pdf",
   },
 ]

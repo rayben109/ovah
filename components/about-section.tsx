@@ -43,7 +43,7 @@ export function AboutSection() {
                 <div>
                   <p className="text-2xl font-bold text-foreground">10,000+</p>
                   <p className="text-sm text-muted-foreground">
-                    Women Empowered
+                    Girls Empowered
                   </p>
                 </div>
               </div>
