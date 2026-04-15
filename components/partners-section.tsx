@@ -52,8 +52,8 @@ export function PartnersSection() {
   ]
 
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-background">
+      <div className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
         {/* Partners Section */}
         <div className="mb-20">
           <div className="text-center space-y-4 mb-12">
@@ -61,7 +61,8 @@ export function PartnersSection() {
               Our <span className="gradient-text">Partners</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
-              We collaborate with leading organizations to amplify our impact and create sustainable change.
+              We collaborate with leading organizations to amplify our impact
+              and create sustainable change.
             </p>
           </div>
 
@@ -84,15 +85,19 @@ export function PartnersSection() {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Reports Section */}
-        <div>
+       {/* Reports Section */}
+        <div className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              <span className="gradient-text font-nunito">Reports</span> & Documentation
+              <span className="gradient-text font-nunito">Reports</span> &
+              Documentation
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Access our comprehensive reports and documentation showcasing our impact and methodologies.
+              Access our comprehensive reports and documentation showcasing our
+              impact and methodologies.
             </p>
           </div>
 
@@ -119,7 +124,9 @@ export function PartnersSection() {
                     <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
                       {report.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{report.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {report.description}
+                    </p>
                   </div>
 
                   <Button
@@ -135,8 +142,8 @@ export function PartnersSection() {
               </Card>
             ))}
           </div>
+          </div>
         </div>
-      </div>
     </section>
   )
 }

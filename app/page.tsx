@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
+import { FeaturedProjects } from "@/components/featured-projects"
 import { AboutSection } from "@/components/about-section"
 import { GallerySection } from "@/components/gallery-section"
 import { ApproachesSection } from "@/components/approaches-section"
@@ -19,8 +20,11 @@ export default function HomePage() {
         <GallerySection />
         <ApproachesSection />
         <ImpactSection />
+         <FeaturedProjects />
+          <SDGComponent />
         <TestimonialsSection />
-        <SDGComponent />
+       
+       
         <PartnersSection />
       </main>
       <Footer />

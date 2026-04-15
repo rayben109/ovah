@@ -181,19 +181,27 @@ export function Footer() {
             {/* Newsletter Signup */}
             <div className="pt-4">
               <h4 className="font-medium mb-2">Stay Updated</h4>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Your email"
-                  className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60"
-                />
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground"
-                >
-                  Subscribe
-                </Button>
-              </div>
+              <form
+  action="https://xxx.usX.list-manage.com/subscribe/post?u=abc123&id=xyz456"
+  method="POST"
+  target="_blank"
+  className="flex gap-2"
+>
+  <input
+    type="email"
+    name="EMAIL"
+    placeholder="Your email"
+    required
+    className="bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 px-3 py-2 rounded-md"
+  />
+
+  <button
+    type="submit"
+    className="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-md"
+  >
+    Subscribe
+  </button>
+</form>
             </div>
           </div>
         </div>
@@ -202,7 +210,7 @@ export function Footer() {
         <div className="py-6 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © 2025 Our Voices Against Harassment (OVAH). All rights reserved.
+              © {new Date().getFullYear()} Our Voices Against Harassment (OVAH). All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
@@ -252,6 +260,7 @@ export function Footer() {
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </motion.div>
           </motion.div>
