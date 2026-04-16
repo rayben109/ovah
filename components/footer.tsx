@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import NewsletterForm from "./newsletter/NewsletterForm"
 
 export function Footer() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
@@ -179,39 +180,12 @@ export function Footer() {
             </div>
 
             {/* Newsletter Signup */}
-            <div className="pt-4">
-              <h4 className="font-medium mb-2">Stay Updated</h4>
-
-              <form
-                action="https://ovah.us1.list-manage.com/subscribe/post?u=c9575656960434563f2c799cd&id=a1c98fd1ba&f_id=00eff2e4f0"
-                method="POST"
-                target="_blank"
-                className="flex gap-2"
-              >
-                <input
-                  type="email"
-                  name="EMAIL"
-                  placeholder="Your email"
-                  required
-                  className="bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 px-3 py-2 rounded-md"
-                />
-
-                {/* Hidden bot field (IMPORTANT) */}
-                <input
-                  type="text"
-                  name="b_c9575656960434563f2c799cd_a1c98fd1ba"
-                  tabIndex="-1"
-                  className="hidden"
-                />
-
-                <button
-                  type="submit"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-md"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
+            <NewsletterForm
+              title="Subscribe to Our Newsletter"
+              placeholder="Enter your email"
+              buttonText="Subscribe"
+              className="mt-6"
+            />
           </div>
         </div>
 

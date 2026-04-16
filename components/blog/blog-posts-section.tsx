@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import ComingSoon from "@/components/coming-soon/ComingSoon" 
 
 const blogPosts = [
   {
@@ -70,8 +71,19 @@ const blogPosts = [
 ]
 
 const categories = ["All", "Events", "Programs", "Campaigns", "Reports", "Innovation"]
+const showComingSoon = true
+
 
 export function BlogPostsSection() {
+  if (showComingSoon) {
+    return (
+      <ComingSoon
+        title="Blog Coming Soon"
+        description="We're preparing impactful stories, updates, and insights. Check back soon!"
+      />
+    )
+  }
+
   return (
     <section className="py-20 bg-[#FCFDFD]">
       <div className="container mx-auto px-4">

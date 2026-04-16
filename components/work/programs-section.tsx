@@ -82,7 +82,7 @@ export function ProgramsSection() {
                     {program.description}
                   </p>
 
-                  <div className="mb-6">
+                 {/*  <div className="mb-6">
                     <h4 className="font-semibold text-[#182858] mb-3 text-xs uppercase tracking-wide text-gray-800">
                       Key Objectives
                     </h4>
@@ -97,7 +97,7 @@ export function ProgramsSection() {
                         <div className="text-xs text-gray-500 italic pt-1">+{program.objectives.length - 4} more</div>
                       )}
                     </div>
-                  </div>
+                  </div> */}
 
                   <Link href={`/our-work/${program.slug}`} className="block">
                     <Button className="w-full bg-gradient-to-r from-[#29A9DF] to-[#5EBCDE] text-white hover:from-[#29A9DF]/90 hover:shadow-xl font-semibold transition-all duration-300">
