@@ -1,154 +1,116 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {
-  BookOpen,
-  Shield,
   Video,
-  Car,
+  Shield,
   Users,
   HeartHandshake,
+  BookOpen,
+  Scale,
+  Car,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 import { programs } from "@/data/programs"
 
-const categories = [
-  {
-    id: "attitudes",
-    title: "Shifting Attitudes & Norms",
-    color: "from-[#29A9DF] to-[#5EBCDE]",
-    programs: programs.filter(program => program.category === "Shifting Attitudes & Norms"),
-  },
-  {
-    id: "skills",
-    title: "Skills Building & Empowerment",
-    color: "from-[#F16D2E] to-[#F58A4E]",
-    programs: programs.filter(program => program.category === "Skills Building & Empowerment"),
-  },
-  {
-    id: "spaces",
-    title: "Creating Safer Spaces",
-    color: "from-[#182858] to-[#5EBCDE]",
-    programs: programs.filter(program => program.category === "Creating Safer Spaces"),
-  },
-]
-
 export function ProgramsSection() {
-  const [activeCategory, setActiveCategory] = useState("attitudes")
-
-  const activePrograms =
-    categories.find((cat) => cat.id === activeCategory)?.programs || []
-
   return (
     <section className="py-20 bg-[#E5CEC2]/20">
       <div className="container mx-auto px-4">
         {/* Section header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#182858] mb-6">
-            Current Programs & Projects
+            Our Current Programs & Projects
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our initiatives are grouped under three key pillars designed to
-            transform communities through education, empowerment, and advocacy.
+            Discover our comprehensive initiatives transforming communities through education, 
+            empowerment, advocacy, and creating safer spaces across Tanzania.
           </p>
         </motion.div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                activeCategory === category.id
-                  ? "bg-gradient-to-r from-[#29A9DF] to-[#5EBCDE] text-white shadow-md"
-                  : "bg-white text-[#182858] border border-[#29A9DF] hover:bg-[#29A9DF]/10"
-              }`}
+        {/* Programs Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {programs.map((program, index) => (
+            <motion.div
+              key={program.slug}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    delay: index * 0.1
+                  }
+                }
+              }}
             >
-              {category.title}
-            </Button>
-          ))}
-        </div>
-
-        {/* Programs List */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto"
-          >
-            {activePrograms.map((program, index) => (
-              <Card
-                key={program.title}
-                className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white overflow-hidden"
-              >
-                <div className="relative h-48 bg-gradient-to-br from-[#29A9DF] to-[#5EBCDE]">
+              <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group bg-white/80 backdrop-blur-sm">
+                <div className="relative h-52 lg:h-60 bg-gradient-to-br from-[#29A9DF] via-[#5EBCDE] to-[#182858]">
                   <Image
                     src={program.image}
                     alt={program.title}
                     fill
-                    className="object-cover opacity-80"
+                    className="object-cover opacity-50 group-hover:opacity-100 transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <program.icon className="h-6 w-6 text-white" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent/0" />
+                  <div className="absolute top-5 left-5 w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/40">
+                    <program.icon className="h-7 w-7 text-white shadow-lg" />
                   </div>
                 </div>
 
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-[#182858] mb-3">
+                <CardContent className="p-7">
+                  <h3 className="text-xl font-bold text-[#182858] mb-3 line-clamp-2 leading-tight group-hover:text-[#29A9DF] transition-colors duration-300">
                     {program.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-gray-600 mb-5 leading-relaxed text-sm">
                     {program.description}
                   </p>
 
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-[#182858] mb-2">
-                      Key Objectives:
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-[#182858] mb-3 text-xs uppercase tracking-wide text-gray-800">
+                      Key Objectives
                     </h4>
-                    <ul className="space-y-1">
-                      {program.objectives.map((objective, idx) => (
-                        <li
-                          key={idx}
-                          className="text-sm text-gray-600 flex items-center"
-                        >
-                          <div className="w-1.5 h-1.5 bg-[#29A9DF] rounded-full mr-2 flex-shrink-0" />
-                          {objective}
-                        </li>
+                    <div className="space-y-1.5">
+                      {program.objectives.slice(0, 4).map((objective, idx) => (
+                        <div key={idx} className="flex items-start text-xs text-gray-700">
+                          <div className="w-1.5 h-1.5 bg-[#F16D2E] rounded-full mr-2.5 mt-1 flex-shrink-0" />
+                          <span className="line-clamp-2">{objective}</span>
+                        </div>
                       ))}
-                    </ul>
+                      {program.objectives.length > 4 && (
+                        <div className="text-xs text-gray-500 italic pt-1">+{program.objectives.length - 4} more</div>
+                      )}
+                    </div>
                   </div>
 
-                  <Link href={`/our-work/${program.slug}`}>
-                  
-                    <Button
-                      variant="outline"
-                      className="w-full border-[#29A9DF] text-[#29A9DF] hover:bg-[#29A9DF] hover:text-white transition-all duration-300"
-                    >
-                      Learn More
+                  <Link href={`/our-work/${program.slug}`} className="block">
+                    <Button className="w-full bg-gradient-to-r from-[#29A9DF] to-[#5EBCDE] text-white hover:from-[#29A9DF]/90 hover:shadow-xl font-semibold transition-all duration-300">
+                      Explore Program →
                     </Button>
                   </Link>
                 </CardContent>
               </Card>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
 }
+
