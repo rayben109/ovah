@@ -172,8 +172,8 @@ export function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary-foreground/60 mt-1" />
                 <span className="text-primary-foreground/80">
-                  Chui street, Mikocheni Industrial Area,
-                  Cocacola Road Dar es Salaam.
+                  Chui street, Mikocheni Industrial Area, Cocacola Road Dar es
+                  Salaam.
                 </span>
               </div>
             </div>
@@ -181,27 +181,36 @@ export function Footer() {
             {/* Newsletter Signup */}
             <div className="pt-4">
               <h4 className="font-medium mb-2">Stay Updated</h4>
-              <form
-  action="https://xxx.usX.list-manage.com/subscribe/post?u=abc123&id=xyz456"
-  method="POST"
-  target="_blank"
-  className="flex gap-2"
->
-  <input
-    type="email"
-    name="EMAIL"
-    placeholder="Your email"
-    required
-    className="bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 px-3 py-2 rounded-md"
-  />
 
-  <button
-    type="submit"
-    className="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-md"
-  >
-    Subscribe
-  </button>
-</form>
+              <form
+                action="https://ovah.us1.list-manage.com/subscribe/post?u=c9575656960434563f2c799cd&id=a1c98fd1ba&f_id=00eff2e4f0"
+                method="POST"
+                target="_blank"
+                className="flex gap-2"
+              >
+                <input
+                  type="email"
+                  name="EMAIL"
+                  placeholder="Your email"
+                  required
+                  className="bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 px-3 py-2 rounded-md"
+                />
+
+                {/* Hidden bot field (IMPORTANT) */}
+                <input
+                  type="text"
+                  name="b_c9575656960434563f2c799cd_a1c98fd1ba"
+                  tabIndex="-1"
+                  className="hidden"
+                />
+
+                <button
+                  type="submit"
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-2 rounded-md"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -210,7 +219,8 @@ export function Footer() {
         <div className="py-6 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © {new Date().getFullYear()} Our Voices Against Harassment (OVAH). All rights reserved.
+              © {new Date().getFullYear()} Our Voices Against Harassment (OVAH).
+              All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link

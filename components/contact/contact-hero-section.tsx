@@ -32,7 +32,7 @@ export function ContactHeroSection() {
                       Call Us
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      +255 752 522 723
+                      +255 652 522 358
                     </p>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ export function ContactHeroSection() {
                       Email
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      info@ovah.or.tz
+                      admin@ovahtanzania.com
                     </p>
                   </div>
                 </div>

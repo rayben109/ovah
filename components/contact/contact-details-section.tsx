@@ -12,7 +12,7 @@ export function ContactDetailsSection() {
             Get in <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We’d love to hear from you. Whether you have questions, feedback, or
+            We'd love to hear from you. Whether you have questions, feedback, or
             partnership ideas — feel free to reach out.
           </p>
         </div>
@@ -22,8 +22,7 @@ export function ContactDetailsSection() {
             <CardContent className="p-6 text-center space-y-2">
               <Phone className="h-10 w-10 text-primary mx-auto mb-2" />
               <h3 className="text-xl font-semibold text-primary">Call Us</h3>
-              <p className="text-muted-foreground">+255 700 123 456</p>
-              <p className="text-muted-foreground">+255 765 987 654</p>
+              <p className="text-muted-foreground">+255 652 522 358</p>
             </CardContent>
           </Card>
 
@@ -31,8 +30,8 @@ export function ContactDetailsSection() {
             <CardContent className="p-6 text-center space-y-2">
               <Mail className="h-10 w-10 text-secondary mx-auto mb-2" />
               <h3 className="text-xl font-semibold text-secondary">Email</h3>
-              <p className="text-muted-foreground">info@ovah.or.tz</p>
-              <p className="text-muted-foreground">support@ovah.or.tz</p>
+              <p className="text-muted-foreground">admin@ovahtanzania.org</p>
+              <p className="text-muted-foreground">ovahtanzania@gmail.com</p>
             </CardContent>
           </Card>
 
@@ -40,8 +39,8 @@ export function ContactDetailsSection() {
             <CardContent className="p-6 text-center space-y-2">
               <MapPin className="h-10 w-10 text-accent mx-auto mb-2" />
               <h3 className="text-xl font-semibold text-accent">Visit Us</h3>
-              <p className="text-muted-foreground">Plot 45, Mikocheni B</p>
-              <p className="text-muted-foreground">Dar es Salaam, Tanzania</p>
+              <p className="text-muted-foreground"> Chui street, Mikocheni Industrial Area</p>
+              <p className="text-muted-foreground">Cocacola Road Dar es Salaam</p>
             </CardContent>
           </Card>
         </div>
