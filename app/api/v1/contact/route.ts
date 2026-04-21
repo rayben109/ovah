@@ -1,4 +1,15 @@
 import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST, 
+  port: Number(process.env.SMTP_PORT) || 465,
+  secure: true, 
+  auth: {
+    user: process.env.SMTP_USER, 
+    pass: process.env.SMTP_PASS,
+  },
+})
 
 export async function POST(req: Request) {
   try {
@@ -10,25 +21,22 @@ export async function POST(req: Request) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
-    // Optional: Forward to Formspree for now
-    const res = await fetch("https://formspree.io/f/mzzjapre", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body,
+    await transporter.sendMail({
+      from: `"${name}" <${process.env.SMTP_USER}>`,
+      to: [process.env.SMTP_USER!, "admin@ovahtanzania.org"],
+      replyTo: email,
+      subject: `New contact form message from ${name}`,
+      text: message,
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>
+      `,
     })
-
-    const data = await res.json()
-
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data.error || "Form submission failed" },
-        { status: 500 }
-      )
-    }
 
     return NextResponse.json({
       success: true,
@@ -38,7 +46,7 @@ export async function POST(req: Request) {
     console.error("Contact form error:", error)
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

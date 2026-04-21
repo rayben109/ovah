@@ -9,40 +9,38 @@ import { Textarea } from "@/components/ui/textarea"
 export function ContactFormSection() {
   const [loading, setLoading] = useState(false)
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault()
-  setLoading(true)
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
 
-  const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget)
 
-  try {
-    const res = await fetch("/api/v1/contact", {
-      method: "POST",
-      body: formData,
-    })
+    try {
+      const res = await fetch("/api/v1/contact", {
+        method: "POST",
+        body: formData,
+      })
 
-    const data = await res.json()
-    setLoading(false)
+      const data = await res.json()
 
-    if (res.ok) {
-      alert("✅ " + data.message)
-      e.currentTarget.reset()
-    } else {
-      alert("❌ " + (data.error || "Failed to send message"))
+      if (res.ok) {
+        alert("✅ " + data.message)
+        e.currentTarget.reset()
+      } else {
+        alert("❌ " + (data.error || "Failed to send message"))
+      }
+    } catch (error) {
+      console.error(error)
+      alert("❌ Something went wrong. Please try again.")
+    } finally {
+      setLoading(false)
     }
-  } catch (error) {
-    console.error(error)
-    alert("❌ Something went wrong. Please try again.")
-    setLoading(false)
   }
-}
-
-
 
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl" />
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
@@ -69,9 +67,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           transition={{ duration: 0.7 }}
           className="space-y-6 bg-muted/40 p-8 rounded-2xl shadow-lg backdrop-blur-md border border-white/10"
           aria-label="Contact Form"
-          action="https://formspree.io/f/mzzjapre"
-          method="POST"
-          target="_blank"
         >
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
@@ -80,10 +75,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </label>
               <Input
                 type="text"
+                name="name"
                 placeholder="Your name"
                 required
                 className="bg-background/60"
-                name="name"
               />
             </div>
 
@@ -93,10 +88,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </label>
               <Input
                 type="email"
+                name="email"
                 placeholder="you@example.com"
                 required
                 className="bg-background/60"
-                name="email"
               />
             </div>
           </div>
@@ -106,15 +101,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               Message
             </label>
             <Textarea
+              name="message"
               placeholder="Write your message..."
               rows={5}
               required
               className="bg-background/60"
-              name="message"
             />
           </div>
-
-          <input type="hidden" name="source" value="OVAH Contact Page" />
 
           <div className="text-center">
             <Button

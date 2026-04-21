@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { ContactHeroSection } from "@/components/contact/contact-hero-section"
 import { ContactDetailsSection } from "@/components/contact/contact-details-section"
 import { ContactFormSection } from "@/components/contact/contact-form-section"
+import { NewsletterSection } from "@/components/blog/newsletter-section"
 
 
 export default function ContactPage() {
@@ -13,6 +14,7 @@ export default function ContactPage() {
         <ContactHeroSection />
         <ContactDetailsSection />
         <ContactFormSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </div>

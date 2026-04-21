@@ -46,7 +46,7 @@ export function ContactHeroSection() {
                       Email
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      admin@ovahtanzania.com
+                      admin@ovahtanzania.org
                     </p>
                   </div>
                 </div>
