@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Users, Heart, Shield } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export function AboutSection() {
   return (
@@ -134,12 +135,15 @@ export function AboutSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
+                  asChild
                   variant="outline"
                   size="lg"
                   className="group border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 bg-transparent hover:shadow-lg"
                 >
-                  Learn More About Our Mission
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  <Link href="/about">
+                    Learn More About Our Mission
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>

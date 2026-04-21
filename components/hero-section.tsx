@@ -110,21 +110,25 @@ export function HeroSection() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
+                asChild
                 size="lg"
                 className="gradient-orange hover:opacity-90 transition-all duration-300 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl"
               >
-                Donate Now
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/support">
+                  Donate Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
+                asChild
                 variant="outline"
                 size="lg"
                 className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 px-8 py-4 text-lg font-semibold bg-transparent hover:shadow-lg"
               >
-                Learn More
+                <Link href="/about">Learn More</Link>
               </Button>
             </motion.div>
           </motion.div>

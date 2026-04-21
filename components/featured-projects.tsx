@@ -112,11 +112,14 @@ export function FeaturedProjects() {
           viewport={{ once: true }}
         >
           <Button
+            asChild
             size="lg"
             className="gradient-orange hover:opacity-90 transition-all duration-300 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl"
           >
-            View All Projects
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/our-work">
+              View All Projects
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </motion.div>
       </div>
