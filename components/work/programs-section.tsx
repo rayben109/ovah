@@ -16,6 +16,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { programs } from "@/data/programs"
+import truncateHtml from "truncate-html"
 
 export function ProgramsSection() {
   return (
@@ -33,8 +34,9 @@ export function ProgramsSection() {
             Our Current Programs & Projects
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover our comprehensive initiatives transforming communities through education, 
-            empowerment, advocacy, and creating safer spaces across Tanzania.
+            Discover our comprehensive initiatives transforming communities
+            through education, empowerment, advocacy, and creating safer spaces
+            across Tanzania.
           </p>
         </motion.div>
 
@@ -50,14 +52,14 @@ export function ProgramsSection() {
               key={program.slug}
               variants={{
                 hidden: { opacity: 0, y: 50 },
-                visible: { 
-                  opacity: 1, 
+                visible: {
+                  opacity: 1,
                   y: 0,
                   transition: {
                     duration: 0.6,
-                    delay: index * 0.1
-                  }
-                }
+                    delay: index * 0.1,
+                  },
+                },
               }}
             >
               <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group bg-white/80 backdrop-blur-sm">
@@ -78,11 +80,20 @@ export function ProgramsSection() {
                   <h3 className="text-xl font-bold text-[#182858] mb-3 line-clamp-2 leading-tight group-hover:text-[#29A9DF] transition-colors duration-300">
                     {program.title}
                   </h3>
-                  <p className="text-gray-600 mb-5 leading-relaxed text-sm">
+                  {/*  <p className="text-gray-600 mb-5 leading-relaxed text-sm">
                     {program.description}
-                  </p>
+                  </p> */}
+                  <div
+                    className="mb-6"
+                    dangerouslySetInnerHTML={{
+                      __html: truncateHtml(program.description, 150, {
+                        byWords: false,
+                        ellipsis: "...",
+                      }),
+                    }}
+                  />
 
-                 {/*  <div className="mb-6">
+                  {/*  <div className="mb-6">
                     <h4 className="font-semibold text-[#182858] mb-3 text-xs uppercase tracking-wide text-gray-800">
                       Key Objectives
                     </h4>

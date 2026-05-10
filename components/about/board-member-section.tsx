@@ -7,7 +7,7 @@ export function BoardMembersSection() {
   const boardMembers = [
     {
       name: "Winnie Godlove Msamba",
-      role: "Board Secretary",
+      role: "Chairperson",
       bio: "Winnie Godlove Msamba is an Advisory Board Member at OVAH, where she leads the resource mobilisation portfolio in support of the organisation's mission to end sexual and gender-based violence and advance gender equality in Tanzania. In this capacity, she provides strategic guidance on funding and partnerships, contributing to institutional strengthening, risk-informed decision-making, and the long-term sustainability of OVAH's programmes. With over three years of experience in the international development sector, Winnie has worked across programme implementation, coordination, and strategic partnerships, developing a grounded understanding of how funding decisions translate into outcomes for communities. Her work focuses on aligning donor priorities with organisational strategy, strengthening funding pipelines, and identifying opportunities for growth and scale. She holds a BA in International Relations from the United States International University-Africa and an MPhil in Development Studies from the University of Cambridge. She brings a systems-oriented perspective, attentive to how incentives, resource flows, and partnerships shape what development work actually delivers. Winnie is particularly committed to building collaborations that are not only well-funded.",
       imageUrl: "/images/board/winnie-msamba.jpg",
       linkedin: "https://linkedin.com/in/",

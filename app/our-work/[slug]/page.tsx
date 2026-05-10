@@ -6,9 +6,14 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
+import VideoCard from "@/components/video/ProgramVideos"
+import ProgramVideos from "@/components/video/ProgramVideos"
 
-
-export default function ProgramDetails({ params } : { params: { slug: string }}) {
+export default function ProgramDetails({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const program = programs.find((p) => p.slug === params.slug)
   console.log(program)
   console.log(params)
@@ -49,28 +54,70 @@ export default function ProgramDetails({ params } : { params: { slug: string }})
             </Button>
           </Link>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            {program.description}
-          </p>
+          <div
+            className="mb-6"
+            dangerouslySetInnerHTML={{ __html: program.description }}
+          />
 
-          <h3 className="text-2xl font-semibold text-[#182858] mb-4">
-            Key Objectives
-          </h3>
-          <ul className="space-y-2 mb-10">
-            {program.objectives.map((obj, i) => (
-              <li key={i} className="flex items-start text-gray-700">
-                <CheckCircle2 className="text-[#29A9DF] mr-2 mt-1 h-5 w-5 flex-shrink-0" />
-                {obj}
-              </li>
-            ))}
-          </ul>
+          {program.extras?.objective ? (
+            <div className="mt-12 py-10">
+              <h3 className="text-2xl font-semibold text-[#182858] mb-4">
+                Project Objective
+              </h3>
+              <p>{program.extras.objective}</p>
+            </div>
+          ) : null}
 
-          <h3 className="text-2xl font-semibold text-[#182858] mb-4">
-            Impact & Outcomes
-          </h3>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            {program.impact}
-          </p>
+          {program.objectives ? (
+            <>
+              <h3 className="text-2xl font-semibold text-[#182858] mb-4">
+               Specific Objectives
+              </h3>
+              <ul className="space-y-2 mb-10">
+                {program.objectives.map((obj, i) => (
+                  <li key={i} className="flex items-start text-gray-700">
+                    <CheckCircle2 className="text-[#29A9DF] mr-2 mt-1 h-5 w-5 flex-shrink-0" />
+                    {obj}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+
+          {program.video && program.video.length > 0 && (
+            <ProgramVideos videos={program.video} />
+          )}
+
+          {program.impact ? (
+            <>
+              <h3 className="text-2xl font-semibold text-[#182858] mb-4">
+                Impact & Outcomes
+              </h3>
+              {/* <p className="text-gray-700 text-lg leading-relaxed">
+                {program.impact}
+              </p> */}
+
+              <div
+                className="mb-6"
+                dangerouslySetInnerHTML={{ __html: program.impact }}
+              />
+            </>
+          ) : null}
+
+          {program.extras?.form && (
+            <div className="mt-12">
+              <h3 className="text-2xl font-semibold text-[#182858] mb-4">
+                Form
+              </h3>
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                <iframe
+                  src={program.extras.form}
+                  className="w-full h-[1200px] border-0"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
