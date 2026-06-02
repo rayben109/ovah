@@ -11,9 +11,11 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    // TipTap/ProseMirror are client-only — exclude from server function tracing
-    // to stay under Vercel's 250 MB unzipped serverless function limit
     outputFileTracingExcludes: {
+      // public/ assets were being bundled into the upload API function (344 MB)
+      // because it references process.cwd() + "public" — exclude them
+      "/api/admin/upload": ["./public/**/*"],
+      // TipTap/ProseMirror are client-only — keep them out of server bundles
       "*": ["@tiptap/**", "prosemirror-*"],
     },
   },
