@@ -229,3 +229,146 @@
     font-family: "Nunito", sans-serif;
   }
 }
+
+/* ── Rich text styles ─────────────────────────────────────────────────────────
+   In @layer components so they override Tailwind's preflight p { margin: 0 }
+   ─────────────────────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Public blog post ─────────────────────────────────────────────────────── */
+  .blog-prose h1,
+  .blog-prose h2,
+  .blog-prose h3,
+  .blog-prose h4 {
+    color: #182858;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .blog-prose h1 { font-size: 1.75rem; }
+  .blog-prose h2 { font-size: 1.4rem; }
+  .blog-prose h3 { font-size: 1.2rem; }
+  .blog-prose h4 { font-size: 1.05rem; }
+
+  .blog-prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    color: #374151;
+    min-height: 1lh;
+  }
+
+  .blog-prose ul,
+  .blog-prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; color: #374151; }
+  .blog-prose ul { list-style-type: disc; }
+  .blog-prose ol { list-style-type: decimal; }
+  .blog-prose li { margin-bottom: 0.4rem; line-height: 1.7; }
+  .blog-prose strong { font-weight: 700; color: #111827; }
+  .blog-prose em    { font-style: italic; }
+  .blog-prose u     { text-decoration: underline; }
+  .blog-prose a     { color: #29A9DF; text-decoration: underline; }
+  .blog-prose a:hover { color: #182858; }
+  .blog-prose blockquote {
+    border-left: 4px solid #29A9DF;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #6b7280;
+    font-style: italic;
+  }
+  .blog-prose hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+  }
+  .blog-prose code {
+    background: #f3f4f6;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+  }
+  .blog-prose pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+  .blog-prose pre code { background: none; padding: 0; }
+  .blog-prose br {
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .blog-prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    display: block;
+  }
+
+  /* ── TipTap admin editor ──────────────────────────────────────────────────── */
+  .rich-editor-content {
+    outline: none;
+    min-height: 420px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+  .rich-editor-content p {
+    margin-bottom: 0.85rem;
+    min-height: 1lh;
+  }
+  .rich-editor-content h1,
+  .rich-editor-content h2,
+  .rich-editor-content h3,
+  .rich-editor-content h4 {
+    color: #182858;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .rich-editor-content h1 { font-size: 1.5rem; }
+  .rich-editor-content h2 { font-size: 1.25rem; }
+  .rich-editor-content h3 { font-size: 1.1rem; }
+  .rich-editor-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 0.85rem; }
+  .rich-editor-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 0.85rem; }
+  .rich-editor-content li { margin-bottom: 0.3rem; }
+  .rich-editor-content strong { font-weight: 700; color: #111827; }
+  .rich-editor-content em { font-style: italic; }
+  .rich-editor-content u { text-decoration: underline; }
+  .rich-editor-content a { color: #29A9DF; text-decoration: underline; }
+  .rich-editor-content blockquote {
+    border-left: 4px solid #29A9DF;
+    padding-left: 1rem;
+    color: #6b7280;
+    font-style: italic;
+    margin: 1rem 0;
+  }
+  .rich-editor-content hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.25rem 0; }
+  .rich-editor-content br {
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .rich-editor-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    display: block;
+    cursor: default;
+  }
+  .rich-editor-content img.ProseMirror-selectednode {
+    outline: 3px solid #29A9DF;
+    border-radius: 0.5rem;
+  }
+  .rich-editor-content p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #9ca3af;
+    pointer-events: none;
+    height: 0;
+  }
+
+}

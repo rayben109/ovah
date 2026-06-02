@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 interface TeamMemberProps {
   name: string
   role: string
-  bio: string
+  bio?: string
   imageUrl: string
   linkedin?: string
 }

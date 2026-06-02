@@ -4,7 +4,12 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Search, BookOpen } from "lucide-react"
 
-export function BlogHeroSection() {
+type Props = {
+  searchQuery: string
+  onSearch: (query: string) => void
+}
+
+export function BlogHeroSection({ searchQuery, onSearch }: Props) {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-br from-[#182858] to-[#29A9DF] text-white">
       <div className="container mx-auto px-4">
@@ -38,27 +43,31 @@ export function BlogHeroSection() {
             Stay informed about our impact, events, and the ongoing fight for gender equality in Tanzania.
           </motion.p>
 
-          <motion.div
+          <motion.form
             className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            onSubmit={(e) => e.preventDefault()}
           >
             <div className="relative flex-1 w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => onSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 rounded-full border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white/50 focus:outline-none"
               />
             </div>
             <Button
+              type="submit"
               size="lg"
               className="bg-[#F16D2E] hover:bg-[#F16D2E]/90 text-white px-8 py-3 rounded-full font-semibold"
             >
               Search
             </Button>
-          </motion.div>
+          </motion.form>
         </div>
       </div>
     </section>
