@@ -1,7 +1,8 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { useEditor, EditorContent } from "@tiptap/react"
+import { useEditor, EditorContent, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react"
+import type { NodeViewProps } from "@tiptap/core"
 import StarterKit from "@tiptap/starter-kit"
 import Underline from "@tiptap/extension-underline"
 import Link from "@tiptap/extension-link"
@@ -14,6 +15,92 @@ import {
   Undo, Redo, CornerDownLeft,
   ImagePlus, Upload, X,
 } from "lucide-react"
+
+// ── Resizable image node ──────────────────────────────────────────────────────
+
+const SIZE_PRESETS = [
+  { label: "25%", value: "25%" },
+  { label: "50%", value: "50%" },
+  { label: "75%", value: "75%" },
+  { label: "Full", value: "100%" },
+]
+
+function ImageNodeView({ node, updateAttributes, selected }: NodeViewProps) {
+  const { src, alt, width } = node.attrs
+  const activeWidth = width || "100%"
+
+  return (
+    <NodeViewWrapper className="my-4 block">
+      <div className="relative inline-block w-full">
+        <img
+          src={src}
+          alt={alt || ""}
+          style={{ width: activeWidth }}
+          className={`block rounded transition-all ${selected ? "ring-2 ring-[#29A9DF] ring-offset-2" : ""}`}
+        />
+
+        {selected && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-white border border-gray-200 rounded-lg shadow-lg px-2 py-1.5 z-10 whitespace-nowrap">
+            <span className="text-xs text-gray-400 mr-1">Width:</span>
+            {SIZE_PRESETS.map((p) => (
+              <button
+                key={p.value}
+                type="button"
+                onClick={() => updateAttributes({ width: p.value })}
+                className={`text-xs px-2 py-0.5 rounded transition ${
+                  activeWidth === p.value
+                    ? "bg-[#182858] text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+            <div className="w-px h-4 bg-gray-200 mx-1" />
+            <input
+              type="text"
+              defaultValue={activeWidth}
+              onBlur={(e) => {
+                const v = e.target.value.trim()
+                if (v) updateAttributes({ width: v })
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  const v = (e.target as HTMLInputElement).value.trim()
+                  if (v) updateAttributes({ width: v })
+                  e.preventDefault()
+                }
+              }}
+              className="text-xs border border-gray-200 rounded px-1.5 py-0.5 w-16 focus:outline-none focus:ring-1 focus:ring-[#29A9DF]"
+              title="Custom width (e.g. 300px or 60%)"
+            />
+          </div>
+        )}
+      </div>
+    </NodeViewWrapper>
+  )
+}
+
+const ResizableImage = Image.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      width: {
+        default: null,
+        parseHTML: (el) => (el as HTMLImageElement).style.width || null,
+        renderHTML: (attrs) => {
+          if (!attrs.width || attrs.width === "100%") return {}
+          return { style: `width: ${attrs.width}` }
+        },
+      },
+    }
+  },
+  addNodeView() {
+    return ReactNodeViewRenderer(ImageNodeView)
+  },
+})
+
+// ── Editor ────────────────────────────────────────────────────────────────────
 
 type Props = {
   content: string
@@ -61,7 +148,7 @@ export default function RichTextEditor({ content, onChange }: Props) {
       Underline,
       Link.configure({ openOnClick: false }),
       Placeholder.configure({ placeholder: "Start writing your post here…" }),
-      Image.configure({ inline: false, allowBase64: false }),
+      ResizableImage.configure({ inline: false, allowBase64: false }),
     ],
     content,
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
@@ -193,7 +280,6 @@ export default function RichTextEditor({ content, onChange }: Props) {
             </button>
           </div>
 
-          {/* Upload from device */}
           <div>
             <input
               ref={fileInputRef}
@@ -219,7 +305,6 @@ export default function RichTextEditor({ content, onChange }: Props) {
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          {/* Manual path */}
           <input
             type="text"
             value={imgSrc}
@@ -246,8 +331,6 @@ export default function RichTextEditor({ content, onChange }: Props) {
           </button>
         </div>
       )}
-
-      {/* Hidden file input handled above */}
 
       {/* ── Editor area ── */}
       <EditorContent editor={editor} className="bg-white" />
