@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default async function BlogPage() {
-  const posts = await getAllPosts()
+  const posts = (await getAllPosts()).filter((p) => !p.hidden)
 
   return (
     <div className="min-h-screen bg-background">

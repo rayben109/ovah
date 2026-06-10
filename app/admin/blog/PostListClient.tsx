@@ -4,12 +4,13 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { BlogPost } from "@/data/blog"
-import { Pencil, Trash2, Star } from "lucide-react"
+import { Pencil, Trash2, Star, Eye, EyeOff } from "lucide-react"
 
 export function PostListClient({ posts: initial }: { posts: BlogPost[] }) {
   const router = useRouter()
   const [posts, setPosts] = useState(initial)
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [toggling, setToggling] = useState<string | null>(null)
 
   async function handleDelete(slug: string, title: string) {
     if (!confirm(`Delete "${title}"? This cannot be undone.`)) return
@@ -20,6 +21,23 @@ export function PostListClient({ posts: initial }: { posts: BlogPost[] }) {
       router.refresh()
     } finally {
       setDeleting(null)
+    }
+  }
+
+  async function handleToggleVisibility(post: BlogPost) {
+    setToggling(post.slug)
+    try {
+      const updated = { ...post, hidden: !post.hidden }
+      const res = await fetch(`/api/admin/blog/${post.slug}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      })
+      if (res.ok) {
+        setPosts((p) => p.map((pp) => (pp.slug === post.slug ? updated : pp)))
+      }
+    } finally {
+      setToggling(null)
     }
   }
 
@@ -40,12 +58,15 @@ export function PostListClient({ posts: initial }: { posts: BlogPost[] }) {
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm divide-y divide-gray-50">
       {posts.map((post) => (
-        <div key={post.slug} className="flex items-center gap-4 px-5 py-4">
+        <div key={post.slug} className={`flex items-center gap-4 px-5 py-4 ${post.hidden ? "opacity-50" : ""}`}>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
               <span className="font-medium text-gray-900 text-sm truncate">{post.title}</span>
               {post.featured && (
                 <Star className="h-3.5 w-3.5 text-[#F16D2E] shrink-0" fill="#F16D2E" />
+              )}
+              {post.hidden && (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-gray-200 text-gray-500 shrink-0">Hidden</span>
               )}
             </div>
             <div className="flex items-center gap-3 mt-0.5 text-xs text-gray-400">
@@ -55,6 +76,15 @@ export function PostListClient({ posts: initial }: { posts: BlogPost[] }) {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => handleToggleVisibility(post)}
+              disabled={toggling === post.slug}
+              title={post.hidden ? "Show post" : "Hide post"}
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
+            >
+              {post.hidden ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+              {toggling === post.slug ? "…" : post.hidden ? "Show" : "Hide"}
+            </button>
             <Link
               href={`/admin/blog/${post.slug}/edit`}
               className="flex items-center gap-1.5 text-xs px-3 py-1.5 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition"

@@ -10,6 +10,7 @@ export type BlogPost = {
   image: string
   featured: boolean
   author?: string
+  hidden?: boolean
 }
 
 export const BLOG_CATEGORIES = [

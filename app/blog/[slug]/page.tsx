@@ -24,7 +24,7 @@ function toHTML(content: string): string {
 
 export default async function BlogPostPage({ params }: Props) {
   const post = await getPost(params.slug)
-  if (!post) notFound()
+  if (!post || post.hidden) notFound()
 
   const htmlContent = toHTML(post.content)
 
