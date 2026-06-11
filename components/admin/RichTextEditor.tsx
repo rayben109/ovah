@@ -2,7 +2,8 @@
 
 import { useRef, useState } from "react"
 import { useEditor, EditorContent, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react"
-import type { NodeViewProps } from "@tiptap/core"
+import type { NodeViewProps } from "@tiptap/react"
+import { Column, Columns } from "./extensions/Columns"
 import StarterKit from "@tiptap/starter-kit"
 import Underline from "@tiptap/extension-underline"
 import Link from "@tiptap/extension-link"
@@ -149,6 +150,8 @@ export default function RichTextEditor({ content, onChange }: Props) {
       Link.configure({ openOnClick: false }),
       Placeholder.configure({ placeholder: "Start writing your post here…" }),
       ResizableImage.configure({ inline: false, allowBase64: false }),
+      Column,
+      Columns,
     ],
     content,
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
@@ -267,6 +270,40 @@ export default function RichTextEditor({ content, onChange }: Props) {
         </ToolbarBtn>
         <ToolbarBtn label="Redo" onClick={() => editor.chain().focus().redo().run()}>
           <Redo className="h-4 w-4" />
+        </ToolbarBtn>
+
+        <Divider />
+
+        <ToolbarBtn
+          label="Insert 2-column layout"
+          onClick={() =>
+            editor.chain().focus().insertContent({
+              type: "columns",
+              attrs: { cols: 2 },
+              content: [
+                { type: "column", content: [{ type: "paragraph" }] },
+                { type: "column", content: [{ type: "paragraph" }] },
+              ],
+            }).run()
+          }
+        >
+          <span className="text-xs font-bold">2col</span>
+        </ToolbarBtn>
+        <ToolbarBtn
+          label="Insert 3-column layout"
+          onClick={() =>
+            editor.chain().focus().insertContent({
+              type: "columns",
+              attrs: { cols: 3 },
+              content: [
+                { type: "column", content: [{ type: "paragraph" }] },
+                { type: "column", content: [{ type: "paragraph" }] },
+                { type: "column", content: [{ type: "paragraph" }] },
+              ],
+            }).run()
+          }
+        >
+          <span className="text-xs font-bold">3col</span>
         </ToolbarBtn>
       </div>
 

@@ -371,4 +371,20 @@
     height: 0;
   }
 
+  /* ── Column layouts (shared: editor + public blog) ───────────────────────── */
+  .columns-layout {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .column-item {
+    flex: 1;
+    min-width: 0;
+  }
+  @media (max-width: 640px) {
+    .columns-layout {
+      flex-direction: column;
+    }
+  }
+
 }
