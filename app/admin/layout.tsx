@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { LayoutDashboard, FileText, LogOut, ExternalLink } from "lucide-react"
+import { FileText, LogOut, ExternalLink, Signature } from "lucide-react"
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -46,7 +46,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         <nav className="flex-1 p-3 space-y-1">
-          {navItem("/admin/blog", "Blog Posts", FileText)}
+          {navItem("/admin/blog",      "Blog Posts",      FileText)}
+          {navItem("/admin/signature", "Email Signature", Signature)}
         </nav>
 
         <div className="p-3 border-t border-gray-100 space-y-1">
