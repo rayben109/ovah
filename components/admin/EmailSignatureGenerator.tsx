@@ -20,12 +20,12 @@ interface SigData {
   linkedin: string; twitter: string; facebook: string; instagram: string
 }
 
-// ─── Brand colors — one solid color per scheme ────────────────────────────────
-const COLORS: Record<ColorId, { color: string; label: string }> = {
-  navy:   { color: "#182858", label: "OVAH Navy" },
-  cyan:   { color: "#29A9DF", label: "OVAH Cyan" },
-  orange: { color: "#F97316", label: "OVAH Orange" },
-  slate:  { color: "#1e293b", label: "Slate" },
+// ─── Color schemes ────────────────────────────────────────────────────────────
+const COLORS: Record<ColorId, { primary: string; accent: string; label: string }> = {
+  navy:   { primary: "#182858", accent: "#29A9DF", label: "OVAH Navy" },
+  cyan:   { primary: "#29A9DF", accent: "#182858", label: "OVAH Cyan" },
+  orange: { primary: "#F97316", accent: "#182858", label: "OVAH Orange" },
+  slate:  { primary: "#1e293b", accent: "#64748b", label: "Slate" },
 }
 
 // ─── Team presets ─────────────────────────────────────────────────────────────
@@ -116,25 +116,25 @@ function photoHTML(data: SigData, size: number, color: string): string {
   return `<table width="${size}" height="${size}" cellpadding="0" cellspacing="0" border="0" style="border-radius:50%;background-color:${color};min-width:${size}px;"><tr><td align="center" valign="middle" style="font-family:Arial,sans-serif;font-size:${fs}px;font-weight:bold;color:#ffffff;line-height:1;">${getInitials(data.name)}</td></tr></table>`
 }
 
-function genClassic(data: SigData, color: string): string {
-  const photo   = photoHTML(data, 72, color)
+function genClassic(data: SigData, primary: string, accent: string): string {
+  const photo   = photoHTML(data, 72, primary)
   const emailEl = data.email ? `<a href="mailto:${esc(data.email)}" style="color:#555555;text-decoration:none;font-family:Arial,sans-serif;">${esc(data.email)}</a>` : ""
   const phoneEl = data.phone ? `<span style="color:#555555;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const contact = [emailEl, phoneEl].filter(Boolean).join("&nbsp;&nbsp;•&nbsp;&nbsp;")
-  const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:${color};text-decoration:none;font-family:Arial,sans-serif;font-size:11px;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
+  const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:${accent};text-decoration:none;font-family:Arial,sans-serif;font-size:11px;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
   const social  = buildSocialIconsHTML(data)
 
   return `<table width="520" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:520px;">
   <tr>
-    <td width="88" valign="top" style="padding-right:16px;border-right:2px solid ${color};vertical-align:top;">${photo}</td>
+    <td width="88" valign="top" style="padding-right:16px;border-right:2px solid ${primary};vertical-align:top;">${photo}</td>
     <td valign="top" style="padding-left:16px;vertical-align:top;">
-      <p style="margin:0 0 2px 0;font-size:17px;font-weight:bold;color:${color};font-family:Arial,sans-serif;line-height:1.2;">${esc(data.name || "Your Name")}</p>
-      <p style="margin:0 0 6px 0;font-size:12px;color:#666666;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}</p>
+      <p style="margin:0 0 2px 0;font-size:17px;font-weight:bold;color:${primary};font-family:Arial,sans-serif;line-height:1.2;">${esc(data.name || "Your Name")}</p>
+      <p style="margin:0 0 6px 0;font-size:11px;font-weight:bold;color:${accent};text-transform:uppercase;letter-spacing:0.6px;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}</p>
       ${contact ? `<p style="margin:0 0 12px 0;font-size:12px;font-family:Arial,sans-serif;">${contact}</p>` : ""}
       <table cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #e5e7eb;padding-top:10px;">
         <tr>
           <td valign="middle" style="padding-right:12px;border-right:1px solid #e5e7eb;vertical-align:middle;">
-            <p style="margin:0 0 1px 0;font-size:12px;font-weight:bold;color:${color};font-family:Arial,sans-serif;">${esc(data.company)}</p>
+            <p style="margin:0 0 1px 0;font-size:12px;font-weight:bold;color:${primary};font-family:Arial,sans-serif;">${esc(data.company)}</p>
             ${data.address ? `<p style="margin:0;font-size:10px;color:#999999;font-family:Arial,sans-serif;">${esc(data.address)}</p>` : ""}
           </td>
           <td valign="middle" style="padding-left:12px;vertical-align:middle;">
@@ -148,8 +148,8 @@ function genClassic(data: SigData, color: string): string {
 </table>`
 }
 
-function genModern(data: SigData, color: string): string {
-  const photo   = photoHTML(data, 56, color)
+function genModern(data: SigData, primary: string, accent: string): string {
+  const photo   = photoHTML(data, 56, primary)
   const emailEl = data.email ? `<a href="mailto:${esc(data.email)}" style="color:#555555;text-decoration:none;font-family:Arial,sans-serif;">${esc(data.email)}</a>` : ""
   const phoneEl = data.phone ? `<span style="color:#555555;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const contact = [emailEl, phoneEl].filter(Boolean).join("&nbsp;&nbsp;•&nbsp;&nbsp;")
@@ -158,14 +158,14 @@ function genModern(data: SigData, color: string): string {
 
   return `<table width="520" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:520px;">
   <tr>
-    <td width="4" bgcolor="${color}" style="background-color:${color};border-radius:2px;">&nbsp;</td>
+    <td width="4" bgcolor="${primary}" style="background-color:${primary};border-radius:2px;">&nbsp;</td>
     <td style="padding-left:16px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td width="68" valign="middle" style="padding-right:14px;vertical-align:middle;">${photo}</td>
           <td valign="middle" style="vertical-align:middle;">
-            <p style="margin:0 0 2px 0;font-size:16px;font-weight:bold;color:${color};font-family:Arial,sans-serif;">${esc(data.name || "Your Name")}</p>
-            <p style="margin:0 0 4px 0;font-size:12px;color:#666666;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}</p>
+            <p style="margin:0 0 2px 0;font-size:16px;font-weight:bold;color:${primary};font-family:Arial,sans-serif;">${esc(data.name || "Your Name")}</p>
+            <p style="margin:0 0 4px 0;font-size:12px;font-weight:bold;color:${accent};font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}</p>
             ${contact ? `<p style="margin:0;font-size:12px;font-family:Arial,sans-serif;">${contact}</p>` : ""}
           </td>
         </tr>
@@ -173,7 +173,7 @@ function genModern(data: SigData, color: string): string {
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:12px;border-top:1px solid #e5e7eb;">
         <tr>
           <td valign="middle" style="padding-top:10px;vertical-align:middle;">
-            <span style="font-size:12px;font-weight:bold;color:${color};font-family:Arial,sans-serif;">${esc(data.company)}</span>
+            <span style="font-size:12px;font-weight:bold;color:${primary};font-family:Arial,sans-serif;">${esc(data.company)}</span>
             ${siteEl ? `&nbsp;&nbsp;<span style="color:#cccccc;">|</span>&nbsp;&nbsp;${siteEl}` : ""}
           </td>
           ${social ? `<td align="right" valign="middle" style="padding-top:10px;vertical-align:middle;text-align:right;">${social}</td>` : ""}
@@ -184,7 +184,7 @@ function genModern(data: SigData, color: string): string {
 </table>`
 }
 
-function genMinimal(data: SigData, color: string): string {
+function genMinimal(data: SigData, primary: string, accent: string): string {
   const emailEl = data.email ? `<a href="mailto:${esc(data.email)}" style="color:#666666;text-decoration:none;font-family:Arial,sans-serif;">${esc(data.email)}</a>` : ""
   const phoneEl = data.phone ? `<span style="color:#666666;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:#666666;text-decoration:none;font-family:Arial,sans-serif;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
@@ -193,9 +193,9 @@ function genMinimal(data: SigData, color: string): string {
 
   return `<table width="440" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:440px;">
   <tr>
-    <td style="border-left:3px solid ${color};padding-left:12px;">
-      <p style="margin:0 0 2px 0;font-size:15px;font-weight:bold;color:${color};font-family:Arial,sans-serif;">${esc(data.name || "Your Name")}</p>
-      <p style="margin:0 0 5px 0;font-size:12px;color:#666666;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}${data.company ? `&nbsp;&nbsp;·&nbsp;&nbsp;<span style="color:#999999;font-family:Arial,sans-serif;">${esc(data.company)}</span>` : ""}</p>
+    <td style="border-left:3px solid ${primary};padding-left:12px;">
+      <p style="margin:0 0 2px 0;font-size:15px;font-weight:bold;color:${primary};font-family:Arial,sans-serif;">${esc(data.name || "Your Name")}</p>
+      <p style="margin:0 0 5px 0;font-size:12px;color:${accent};font-weight:bold;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}${data.company ? `&nbsp;&nbsp;·&nbsp;&nbsp;<span style="color:#888888;font-weight:normal;font-family:Arial,sans-serif;">${esc(data.company)}</span>` : ""}</p>
       ${contact ? `<p style="margin:0 0 6px 0;font-size:11px;font-family:Arial,sans-serif;">${contact}</p>` : ""}
       ${social ? `<p style="margin:0;">${social}</p>` : ""}
     </td>
@@ -204,10 +204,10 @@ function genMinimal(data: SigData, color: string): string {
 }
 
 function generateHTML(data: SigData, template: Template, colorId: ColorId): string {
-  const { color } = COLORS[colorId]
-  if (template === "classic") return genClassic(data, color)
-  if (template === "modern")  return genModern(data, color)
-  return genMinimal(data, color)
+  const { primary, accent } = COLORS[colorId]
+  if (template === "classic") return genClassic(data, primary, accent)
+  if (template === "modern")  return genModern(data, primary, accent)
+  return genMinimal(data, primary, accent)
 }
 
 function generatePlainText(data: SigData): string {
@@ -390,9 +390,9 @@ export default function EmailSignatureGenerator() {
 
             <TabsContent value="style" className="space-y-4 mt-3">
               <div>
-                <Label className="text-xs font-medium text-gray-700 mb-2 block">Brand color</Label>
+                <Label className="text-xs font-medium text-gray-700 mb-2 block">Color scheme</Label>
                 <div className="space-y-2">
-                  {(Object.entries(COLORS) as [ColorId, { color: string; label: string }][]).map(([id, { color, label }]) => (
+                  {(Object.entries(COLORS) as [ColorId, { primary: string; accent: string; label: string }][]).map(([id, { primary, accent, label }]) => (
                     <button
                       key={id}
                       onClick={() => setColorId(id)}
@@ -402,10 +402,10 @@ export default function EmailSignatureGenerator() {
                           : "border-gray-200 hover:border-gray-300 bg-white"
                       }`}
                     >
-                      <span
-                        className="w-6 h-6 rounded-full border border-white shadow shrink-0"
-                        style={{ backgroundColor: color }}
-                      />
+                      <span className="flex gap-1 shrink-0">
+                        <span className="w-5 h-5 rounded-full border border-white shadow-sm" style={{ backgroundColor: primary }} />
+                        <span className="w-5 h-5 rounded-full border border-white shadow-sm" style={{ backgroundColor: accent }} />
+                      </span>
                       <span className="text-sm text-gray-700">{label}</span>
                       {colorId === id && <Check className="w-3.5 h-3.5 text-[#182858] ml-auto" />}
                     </button>
