@@ -56,6 +56,36 @@ export const programs: Program[] = [
         title: "Episode 5",
         url: "https://youtu.be/HyROtmloBn4?list=PLpg5jv9w63c9FffBA163HSwmzIH44Iqiy",
       },
+      {
+        id: "75T1tdfcV74",
+        title: "Elimika na Mwajuma Trailer",
+        url: "https://youtu.be/75T1tdfcV74?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
+      {
+        id: "NwMCCrpKpLs",
+        title: "Rushway Ngonini Ukatili",
+        url: "https://youtu.be/NwMCCrpKpLs?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
+      {
+        id: "Zi8z3sHoT7A",
+        title: "Ndoaza Utotonini Ukatili",
+        url: "https://youtu.be/Zi8z3sHoT7A?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
+      {
+        id: "uD0wSWQCpNU",
+        title: "Utamaduni wa Ubakaji ni Ukatili",
+        url: "https://youtu.be/uD0wSWQCpNU?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
+      {
+        id: "CSGoQPoaQjM",
+        title: "Unyanyasaji wa Kijinsia ni Ukatili",
+        url: "https://youtu.be/CSGoQPoaQjM?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
+      {
+        id: "LPTqhEhG17k",
+        title: "Championing for Safe Institutions — Project Documentary 2023",
+        url: "https://youtu.be/LPTqhEhG17k?list=PLpg5jv9w63c_1Frr3nl9LSOsUUH1IhbR3",
+      },
     ],
   },
   {
