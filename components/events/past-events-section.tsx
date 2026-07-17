@@ -16,9 +16,9 @@ import { useState } from "react"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
 
-import { pastEvents } from "@/data/events"
+import type { PastEvent } from "@/data/events"
 
-export function PastEventsSection() {
+export function PastEventsSection({ events: pastEvents }: { events: PastEvent[] }) {
   const [openGallery, setOpenGallery] = useState<number | null>(null)
 
   return (
@@ -143,7 +143,7 @@ export function PastEventsSection() {
                 <Lightbox
                   open={openGallery !== null}
                   close={() => setOpenGallery(null)}
-                  slides={event.gallery.map((src) => ({ src }))}
+                  slides={(event.gallery ?? []).map((src) => ({ src }))}
                 />
               )}
             </motion.div>

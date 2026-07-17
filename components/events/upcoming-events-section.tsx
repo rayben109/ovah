@@ -5,9 +5,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, Clock, Users, ExternalLink } from "lucide-react"
 
-import { upcomingEvents } from "@/data/events"
+import type { UpcomingEvent } from "@/data/events"
 
-export function UpcomingEventsSection() {
+export function UpcomingEventsSection({ events: upcomingEvents }: { events: UpcomingEvent[] }) {
   return (
     <section id="upcoming-events" className="py-20 bg-[#FCFDFD]">
       <div className="container mx-auto px-4">
