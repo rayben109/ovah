@@ -18,6 +18,7 @@ interface SigData {
   name: string; title: string; email: string; phone: string
   website: string; photo: string; company: string; address: string
   linkedin: string; twitter: string; facebook: string; instagram: string
+  quote: string
 }
 
 // ─── Color schemes ────────────────────────────────────────────────────────────
@@ -38,46 +39,50 @@ const PRESETS = [
 ]
 
 const DEFAULT: SigData = {
-  name: "", title: "", email: "", phone: "",
-  website: "https://ovah.or.tz", photo: "",
-  company: "OVAH Tanzania", address: "Dar es Salaam, Tanzania",
-  linkedin: "", twitter: "", facebook: "", instagram: "",
+  name: "",
+  title: "",
+  email: "",
+  phone: "",
+  website: "https://ovah.or.tz",
+  photo: "",
+  company: "OVAH Tanzania",
+  address: "Dar es Salaam, Tanzania",
+  linkedin: "https://www.linkedin.com/company/ovah-tanzania/",
+  twitter: "https://x.com/ovahtanzania",
+  facebook: "https://www.facebook.com/ovahtanzania",
+  instagram: "https://www.instagram.com/ovahtanzania",
+  quote: "",
 }
 
-// ─── Social media SVG icons (Simple Icons, viewBox 0 0 24 24) ─────────────────
-// LinkedIn & Facebook paths include their own background shape.
-// Twitter (X) & Instagram paths are mark-only — a circle bg is added via expanded viewBox.
+// ─── Social media SVG icons — lucide-style stroke icons (matches footer) ──────
+// elements = inner SVG elements from lucide-react (stroke-based, 24×24 viewBox)
 const SOCIAL_ICONS = {
   linkedin: {
-    label: "LinkedIn", bg: "#0077B5", hasBg: true,
-    path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+    label: "LinkedIn",
+    elements: `<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>`,
   },
   twitter: {
-    label: "X", bg: "#000000", hasBg: false,
-    path: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.963l4.256 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z",
+    label: "X",
+    elements: `<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.963l4.256 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="white" stroke="none"/>`,
   },
   facebook: {
-    label: "Facebook", bg: "#1877F2", hasBg: true,
-    path: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z",
+    label: "Facebook",
+    elements: `<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>`,
   },
   instagram: {
-    label: "Instagram", bg: "#E1306C", hasBg: true,
-    path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z",
+    label: "Instagram",
+    elements: `<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>`,
   },
 } as const
 
 type SocialPlatform = keyof typeof SOCIAL_ICONS
 
-// Builds a 26×26 SVG string for each platform.
-// Platforms with hasBg: path includes its own rounded-square/circle background.
-// Platforms without hasBg: we add an explicit circle behind the mark.
-function makeSocialSvg(platform: SocialPlatform): string {
-  const { bg, path, hasBg } = SOCIAL_ICONS[platform]
-  if (hasBg) {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26"><path d="${path}" fill="${bg}"/></svg>`
-  }
-  // Expand viewBox by 4px on each side so the circle (r=16 centred at 12,12) fills it
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 32 32" width="26" height="26"><circle cx="12" cy="12" r="16" fill="${bg}"/><path d="${path}" fill="white"/></svg>`
+// Colored circle + white stroke lucide icon — same visual language as the footer buttons.
+// viewBox adds 4-unit padding → circle (dia 24) ≈ 22px inside 30px img.
+// Icon scaled to 65% and centered within the circle.
+function makeSocialSvg(platform: SocialPlatform, color: string): string {
+  const { elements } = SOCIAL_ICONS[platform]
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 32 32" width="30" height="30"><circle cx="12" cy="12" r="12" fill="${color}"/><g stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(4.2,4.2) scale(0.65)">${elements}</g></svg>`
 }
 
 const svgToDataUri = (svg: string) =>
@@ -96,21 +101,30 @@ const safeUrl = (url: string) => {
 const getInitials = (name: string) =>
   name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() || "?"
 
-function buildSocialIconsHTML(data: SigData): string {
+function buildSocialIconsHTML(data: SigData, color: string): string {
   return (["linkedin", "twitter", "facebook", "instagram"] as SocialPlatform[])
     .filter(p => data[p])
     .map(p => {
-      const src   = svgToDataUri(makeSocialSvg(p))
+      const src   = svgToDataUri(makeSocialSvg(p, color))
       const label = SOCIAL_ICONS[p].label
-      return `<a href="${esc(safeUrl(data[p]))}" target="_blank" style="display:inline-block;margin-right:6px;vertical-align:middle;text-decoration:none;"><img src="${src}" width="26" height="26" alt="${label}" style="display:block;border:0;" /></a>`
+      return `<a href="${esc(safeUrl(data[p]))}" target="_blank" style="display:inline-block;margin-right:16px;vertical-align:middle;text-decoration:none;"><img src="${src}" width="30" height="30" alt="${label}" style="display:block;border:0;" /></a>`
     })
     .join("")
 }
 
 // ─── HTML Generators — single brand color, neutrals for supporting text ───────
+const SITE_URL = "https://ovah.or.tz"
+
+function absoluteUrl(url: string): string {
+  if (!url) return url
+  if (url.startsWith("/")) return `${SITE_URL}${url}`
+  return url
+}
+
 function photoHTML(data: SigData, size: number, color: string): string {
   if (data.photo) {
-    return `<img src="${esc(data.photo)}" width="${size}" height="${size}" alt="${esc(data.name)}" style="display:block;width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;" />`
+    const src = absoluteUrl(data.photo)
+    return `<img src="${esc(src)}" width="${size}" height="${size}" alt="${esc(data.name)}" style="display:block;width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;" />`
   }
   const fs = Math.round(size * 0.34)
   return `<table width="${size}" height="${size}" cellpadding="0" cellspacing="0" border="0" style="border-radius:50%;background-color:${color};min-width:${size}px;"><tr><td align="center" valign="middle" style="font-family:Arial,sans-serif;font-size:${fs}px;font-weight:bold;color:#ffffff;line-height:1;">${getInitials(data.name)}</td></tr></table>`
@@ -122,7 +136,7 @@ function genClassic(data: SigData, primary: string, accent: string): string {
   const phoneEl = data.phone ? `<span style="color:#555555;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const contact = [emailEl, phoneEl].filter(Boolean).join("&nbsp;&nbsp;•&nbsp;&nbsp;")
   const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:${accent};text-decoration:none;font-family:Arial,sans-serif;font-size:11px;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
-  const social  = buildSocialIconsHTML(data)
+  const social  = buildSocialIconsHTML(data, primary)
 
   return `<table width="520" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:520px;">
   <tr>
@@ -145,7 +159,7 @@ function genClassic(data: SigData, primary: string, accent: string): string {
       </table>
     </td>
   </tr>
-</table>`
+</table>${quoteHTML(data, 520) ? `\n${quoteHTML(data, 520)}` : ""}`
 }
 
 function genModern(data: SigData, primary: string, accent: string): string {
@@ -154,7 +168,7 @@ function genModern(data: SigData, primary: string, accent: string): string {
   const phoneEl = data.phone ? `<span style="color:#555555;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const contact = [emailEl, phoneEl].filter(Boolean).join("&nbsp;&nbsp;•&nbsp;&nbsp;")
   const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:#888888;text-decoration:none;font-family:Arial,sans-serif;font-size:11px;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
-  const social  = buildSocialIconsHTML(data)
+  const social  = buildSocialIconsHTML(data, primary)
 
   return `<table width="520" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:520px;">
   <tr>
@@ -181,7 +195,7 @@ function genModern(data: SigData, primary: string, accent: string): string {
       </table>
     </td>
   </tr>
-</table>`
+</table>${quoteHTML(data, 520) ? `\n${quoteHTML(data, 520)}` : ""}`
 }
 
 function genMinimal(data: SigData, primary: string, accent: string): string {
@@ -189,7 +203,7 @@ function genMinimal(data: SigData, primary: string, accent: string): string {
   const phoneEl = data.phone ? `<span style="color:#666666;font-family:Arial,sans-serif;">${esc(data.phone)}</span>` : ""
   const siteEl  = data.website ? `<a href="${esc(safeUrl(data.website))}" target="_blank" style="color:#666666;text-decoration:none;font-family:Arial,sans-serif;">${esc(data.website.replace(/^https?:\/\//, ""))}</a>` : ""
   const contact = [emailEl, phoneEl, siteEl].filter(Boolean).join("&nbsp;&nbsp;•&nbsp;&nbsp;")
-  const social  = buildSocialIconsHTML(data)
+  const social  = buildSocialIconsHTML(data, primary)
 
   return `<table width="440" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:440px;">
   <tr>
@@ -198,6 +212,17 @@ function genMinimal(data: SigData, primary: string, accent: string): string {
       <p style="margin:0 0 5px 0;font-size:12px;color:${accent};font-weight:bold;font-family:Arial,sans-serif;">${esc(data.title || "Job Title")}${data.company ? `&nbsp;&nbsp;·&nbsp;&nbsp;<span style="color:#888888;font-weight:normal;font-family:Arial,sans-serif;">${esc(data.company)}</span>` : ""}</p>
       ${contact ? `<p style="margin:0 0 6px 0;font-size:11px;font-family:Arial,sans-serif;">${contact}</p>` : ""}
       ${social ? `<p style="margin:0;">${social}</p>` : ""}
+    </td>
+  </tr>
+</table>${quoteHTML(data, 440) ? `\n${quoteHTML(data, 440)}` : ""}`
+}
+
+function quoteHTML(data: SigData, width: number): string {
+  if (!data.quote) return ""
+  return `<table width="${width}" cellpadding="0" cellspacing="0" border="0" style="max-width:${width}px;font-family:Arial,sans-serif;">
+  <tr>
+    <td style="padding-top:10px;border-top:1px solid #f0f0f0;">
+      <p style="margin:0;font-size:11px;color:#888888;font-style:italic;font-family:Georgia,'Times New Roman',serif;">&ldquo;${esc(data.quote)}&rdquo;</p>
     </td>
   </tr>
 </table>`
@@ -226,6 +251,7 @@ function generatePlainText(data: SigData): string {
     .map(p => `${SOCIAL_ICONS[p].label}: ${data[p]}`)
 
   if (socialParts.length) parts.push(socialParts.join(" | "))
+  if (data.quote) parts.push(`\n"${data.quote}"`)
   return parts.join("\n")
 }
 
@@ -298,16 +324,38 @@ export default function EmailSignatureGenerator() {
   const [template, setTemplate] = useState<Template>("classic")
   const [colorId,  setColorId]  = useState<ColorId>("navy")
   const [copied,   setCopied]   = useState<"html" | "text" | null>(null)
+  const [showRaw,  setShowRaw]  = useState(false)
 
   const set = (field: keyof SigData) =>
     (e: React.ChangeEvent<HTMLInputElement>) =>
       setData(prev => ({ ...prev, [field]: e.target.value }))
 
-  async function copy(type: "html" | "text") {
-    const content = type === "html"
-      ? generateHTML(data, template, colorId)
-      : generatePlainText(data)
-    await navigator.clipboard.writeText(content)
+  function copy(type: "html" | "text") {
+    if (type === "html") {
+      const html = generateHTML(data, template, colorId)
+      // Render into an offscreen element, select the DOM nodes, and execCommand copy.
+      // This gives email clients (Gmail, Outlook) rendered content rather than a raw
+      // HTML string blob — the ClipboardItem approach can cause Gmail to paste twice.
+      const el = document.createElement("div")
+      el.innerHTML = html
+      Object.assign(el.style, {
+        position: "fixed", left: "-9999px", top: "0",
+        pointerEvents: "none", opacity: "0",
+      })
+      document.body.appendChild(el)
+      try {
+        const range = document.createRange()
+        range.selectNodeContents(el)
+        window.getSelection()?.removeAllRanges()
+        window.getSelection()?.addRange(range)
+        document.execCommand("copy")
+      } finally {
+        window.getSelection()?.removeAllRanges()
+        document.body.removeChild(el)
+      }
+    } else {
+      navigator.clipboard.writeText(generatePlainText(data))
+    }
     setCopied(type)
     setTimeout(() => setCopied(null), 2500)
   }
@@ -373,6 +421,15 @@ export default function EmailSignatureGenerator() {
               <Field label="Phone"      value={data.phone}   onChange={set("phone")}   placeholder="+255 700 000 000" />
               <Field label="Company"    value={data.company} onChange={set("company")} placeholder="OVAH Tanzania" />
               <Field label="Address"    value={data.address} onChange={set("address")} placeholder="Dar es Salaam, Tanzania" />
+              <div className="space-y-1 pt-1 border-t border-dashed border-gray-200">
+                <Label className="text-xs font-medium text-gray-600">Favourite quote <span className="text-gray-400 font-normal">(optional — shown at bottom)</span></Label>
+                <Input
+                  className="h-8 text-sm"
+                  value={data.quote}
+                  onChange={set("quote")}
+                  placeholder="The time is always right to do what is right."
+                />
+              </div>
             </TabsContent>
 
             <TabsContent value="links" className="space-y-3 mt-3">
@@ -380,7 +437,7 @@ export default function EmailSignatureGenerator() {
               <div className="space-y-1">
                 <Label className="text-xs font-medium text-gray-600">Photo URL</Label>
                 <Input className="h-8 text-sm" value={data.photo} onChange={set("photo")} placeholder="https://…/photo.jpg" />
-                <p className="text-[10px] text-gray-400">Use an absolute URL so the photo appears in email clients.</p>
+                <p className="text-[10px] text-gray-400">Relative paths (e.g. /images/team/…) are automatically made absolute using ovah.or.tz.</p>
               </div>
               <Field label="LinkedIn URL"    value={data.linkedin}  onChange={set("linkedin")}  placeholder="https://linkedin.com/in/…" />
               <Field label="X (Twitter) URL" value={data.twitter}   onChange={set("twitter")}   placeholder="https://x.com/…" />
@@ -419,7 +476,15 @@ export default function EmailSignatureGenerator() {
         {/* Preview */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-700">Preview</h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-gray-700">Preview</h3>
+              <button
+                onClick={() => setShowRaw(v => !v)}
+                className="text-[10px] text-gray-400 hover:text-gray-600 underline underline-offset-2"
+              >
+                {showRaw ? "Hide source" : "View source"}
+              </button>
+            </div>
             <div className="flex gap-2">
               <Button size="sm" onClick={() => copy("html")} className="bg-[#182858] hover:bg-[#182858]/90 text-white gap-1.5 h-8 text-xs">
                 {copied === "html" ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -450,15 +515,31 @@ export default function EmailSignatureGenerator() {
             </div>
           </div>
 
+          {showRaw && (
+            <div className="space-y-1">
+              <p className="text-xs text-gray-500">Raw HTML — inspect for duplication, or copy manually from here:</p>
+              <textarea
+                readOnly
+                value={html}
+                rows={8}
+                className="w-full font-mono text-[10px] leading-relaxed border border-gray-200 rounded-lg p-3 bg-gray-50 text-gray-700 resize-none focus:outline-none"
+                onClick={e => (e.target as HTMLTextAreaElement).select()}
+              />
+            </div>
+          )}
+
           <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3 text-xs text-blue-700 space-y-1.5">
             <p className="font-semibold text-blue-800">How to use in Gmail</p>
-            <ol className="list-decimal list-inside space-y-0.5 text-blue-600">
+            <ol className="list-decimal list-inside space-y-1 text-blue-600">
               <li>Click <strong>Copy HTML</strong> above</li>
-              <li>Go to Gmail → Settings → See all settings → General → Signature</li>
-              <li>Click inside the signature box, then paste with <strong>Ctrl+V</strong> / <strong>⌘V</strong></li>
-              <li>Save changes and compose a new email to verify</li>
+              <li>Go to Gmail → <strong>Settings → See all settings → General → Signature</strong></li>
+              <li>Click inside the signature editor box</li>
+              <li>Select all existing content (<strong>Ctrl+A</strong> / <strong>⌘A</strong>) and delete it</li>
+              <li>Paste with <strong>Ctrl+V</strong> / <strong>⌘V</strong></li>
+              <li>Click <strong>Save Changes</strong> at the bottom of the settings page</li>
             </ol>
-            <p className="text-blue-500 pt-0.5">For Outlook: Home → Signature → Signatures → New, paste into the editor.</p>
+            <p className="text-amber-600 font-medium pt-1">⚠ Do not paste in the compose window — paste only in the Signature settings editor.</p>
+            <p className="text-blue-500">For Outlook: Home → Signature → Signatures → New, paste into the editor.</p>
           </div>
         </div>
       </div>

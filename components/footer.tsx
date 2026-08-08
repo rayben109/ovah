@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Mail,
@@ -40,34 +39,28 @@ export function Footer() {
               empowerment, advocacy, and community engagement.
             </p>
             <div className="flex space-x-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Twitter className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Instagram className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Linkedin className="h-5 w-5" />
-              </Button>
+              <Link href="https://www.facebook.com/ovahtanzania" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                  <Facebook className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="https://x.com/ovahtanzania" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="X (Twitter)">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.963l4.256 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </Button>
+              </Link>
+              <Link href="https://www.instagram.com/ovahtanzania" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                  <Instagram className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="https://www.linkedin.com/company/ovah-tanzania/" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
 
