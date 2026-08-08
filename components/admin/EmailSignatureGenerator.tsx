@@ -79,7 +79,7 @@ type SocialPlatform = keyof typeof SOCIAL_ICONS
 
 // Colored circle + white stroke lucide icon — same visual language as the footer buttons.
 // viewBox adds 4-unit padding → circle (dia 24) ≈ 22px inside 30px img.
-// Icon scaled to 65% and centered within the circle.
+// Icon scaled to 65% and centered within the circle..
 function makeSocialSvg(platform: SocialPlatform, color: string): string {
   const { elements } = SOCIAL_ICONS[platform]
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 32 32" width="30" height="30"><circle cx="12" cy="12" r="12" fill="${color}"/><g stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(4.2,4.2) scale(0.65)">${elements}</g></svg>`
