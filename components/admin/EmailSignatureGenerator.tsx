@@ -46,7 +46,7 @@ const DEFAULT: SigData = {
   website: "https://ovah.or.tz",
   photo: "",
   company: "OVAH Tanzania",
-  address: "Dar es Salaam, Tanzania",
+  address: "Kinondoni, Dar es Salaam, Tanzania",
   linkedin: "https://www.linkedin.com/company/ovah-tanzania/",
   twitter: "https://x.com/ovahtanzania",
   facebook: "https://www.facebook.com/ovahtanzania",
