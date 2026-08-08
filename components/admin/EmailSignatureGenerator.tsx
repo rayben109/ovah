@@ -55,7 +55,7 @@ const DEFAULT: SigData = {
 }
 
 // ─── Social media SVG icons — lucide-style stroke icons (matches footer) ──────
-// elements = inner SVG elements from lucide-react (stroke-based, 24×24 viewBox)
+// elements = inner SVG elements from lucide-react (stroke-based, 24×24 viewBox) 
 const SOCIAL_ICONS = {
   linkedin: {
     label: "LinkedIn",
