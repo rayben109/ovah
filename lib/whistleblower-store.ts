@@ -4,15 +4,21 @@ import path from "path"
 export type WhistleblowerReport = {
   id: string
   submittedAt: string
-  concernType: string
-  description: string
-  incidentDate?: string
-  personsInvolved?: string
-  location?: string
+  // Reporter info
+  reporterName?: string
+  reporterRole?: string
+  reporterEmail?: string
+  reporterPhone?: string
   anonymous: boolean
-  contactName?: string
-  contactEmail?: string
-  contactPhone?: string
+  // Concern
+  concernTypes: string[]
+  otherConcern?: string
+  details: string
+  // Evidence
+  evidenceAvailable: boolean
+  evidenceDescription?: string
+  // Outcome
+  desiredOutcome: string
   status: "new" | "under_review" | "resolved" | "closed"
 }
 

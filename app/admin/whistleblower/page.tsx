@@ -46,11 +46,11 @@ function ReportCard({ report, onUpdate }: { report: WhistleblowerReport; onUpdat
           {cfg.label}
         </span>
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-[#182858] text-sm">{report.concernType}</p>
+          <p className="font-semibold text-[#182858] text-sm">{report.concernTypes.join(", ")}</p>
           <p className="text-xs text-gray-400 mt-0.5">
-            {new Date(report.submittedAt).toLocaleString()} · {report.anonymous ? "Anonymous" : report.contactName || "Identified"}
+            {new Date(report.submittedAt).toLocaleString()} · {report.anonymous ? "Anonymous" : report.reporterName || "Identified"}
           </p>
-          <p className="text-sm text-gray-600 mt-1 line-clamp-2">{report.description}</p>
+          <p className="text-sm text-gray-600 mt-1 line-clamp-2">{report.details}</p>
         </div>
         {open ? <ChevronUp className="h-4 w-4 text-gray-400 shrink-0 mt-0.5" /> : <ChevronDown className="h-4 w-4 text-gray-400 shrink-0 mt-0.5" />}
       </button>
@@ -58,23 +58,34 @@ function ReportCard({ report, onUpdate }: { report: WhistleblowerReport; onUpdat
       {open && (
         <div className="border-t border-gray-100 p-5 space-y-4 bg-gray-50">
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
-            {report.incidentDate && <Detail label="Incident date" value={report.incidentDate} />}
-            {report.location && <Detail label="Location" value={report.location} />}
-            {report.personsInvolved && <Detail label="Persons involved" value={report.personsInvolved} />}
+            <Detail label="Concern type(s)" value={report.concernTypes.join(", ")} />
+            <Detail label="Evidence available" value={report.evidenceAvailable ? "Yes" : "No"} />
             <Detail label="Report ID" value={report.id} mono />
           </div>
 
           <div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Full description</p>
-            <p className="text-sm text-gray-700 whitespace-pre-wrap bg-white rounded-lg border border-gray-200 p-3">{report.description}</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Details of the concern</p>
+            <p className="text-sm text-gray-700 whitespace-pre-wrap bg-white rounded-lg border border-gray-200 p-3">{report.details}</p>
           </div>
 
-          {!report.anonymous && (report.contactName || report.contactEmail || report.contactPhone) && (
+          {report.evidenceAvailable && report.evidenceDescription && (
+            <div>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Evidence description</p>
+              <p className="text-sm text-gray-700 bg-white rounded-lg border border-gray-200 p-3">{report.evidenceDescription}</p>
+            </div>
+          )}
+
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Desired outcome</p>
+            <p className="text-sm text-gray-700 whitespace-pre-wrap bg-white rounded-lg border border-gray-200 p-3">{report.desiredOutcome}</p>
+          </div>
+
+          {!report.anonymous && (report.reporterName || report.reporterEmail || report.reporterPhone) && (
             <div className="rounded-lg border border-[#29A9DF]/30 bg-[#29A9DF]/5 p-3 text-sm space-y-1">
               <p className="text-xs font-semibold text-[#182858] uppercase tracking-wide mb-1">Submitter contact</p>
-              {report.contactName  && <p><span className="text-gray-500">Name: </span>{report.contactName}</p>}
-              {report.contactEmail && <p><span className="text-gray-500">Email: </span><a href={`mailto:${report.contactEmail}`} className="underline text-[#182858]">{report.contactEmail}</a></p>}
-              {report.contactPhone && <p><span className="text-gray-500">Phone: </span>{report.contactPhone}</p>}
+              {report.reporterName  && <p><span className="text-gray-500">Name: </span>{report.reporterName}{report.reporterRole ? ` — ${report.reporterRole}` : ""}</p>}
+              {report.reporterEmail && <p><span className="text-gray-500">Email: </span><a href={`mailto:${report.reporterEmail}`} className="underline text-[#182858]">{report.reporterEmail}</a></p>}
+              {report.reporterPhone && <p><span className="text-gray-500">Phone: </span>{report.reporterPhone}</p>}
             </div>
           )}
 
