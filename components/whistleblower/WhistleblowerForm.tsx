@@ -95,6 +95,12 @@ function CheckCard({
           : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
       }`}
     >
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="sr-only"
+      />
       <span
         className={`w-5 h-5 rounded flex items-center justify-center border-2 transition shrink-0 ${
           checked ? "bg-[#182858] border-[#182858]" : "border-gray-300 bg-white"
