@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Shield, EyeOff, ClipboardCheck, AlertTriangle } from "lucide-react"
+import WhistleblowerForm from "@/components/whistleblower/WhistleblowerForm"
 
 export const metadata = {
   title: "Whistleblower & Misconduct Reporting | OVAH Tanzania",
@@ -80,46 +81,6 @@ export default function WhistleblowerPage() {
         </div>
       </section>
 
-      {/* What you can report 
-      <section className="bg-[#f8fafc] py-12 px-4 border-b border-gray-100">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold text-[#182858] mb-4">
-            What You Can Report
-          </h2>
-          <ul className="grid sm:grid-cols-2 gap-3">
-            {CONCERN_TYPES.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-sm text-gray-700"
-              >
-                <span className="mt-1 w-4 h-4 rounded-full bg-[#29A9DF]/20 flex items-center justify-center shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#29A9DF]" />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      */}
-
-      {/* Warning / disclaimer 
-      <section className="bg-amber-50 border-y border-amber-100 py-5 px-4">
-        <div className="max-w-3xl mx-auto flex gap-3 items-start">
-          <AlertTriangle className="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-800">
-            <strong>Important:</strong> This form is for reporting concerns
-            related to OVAH&apos;s operations, staff, volunteers, or partners —
-            not for reporting personal experiences of gender-based violence.
-            If you or someone you know needs immediate support,{" "}
-            <a href="/report" className="underline font-medium">
-              use our SGBV case reporting form
-            </a>{" "}
-            or call emergency services.
-          </p>
-        </div>
-      </section>
-      */}
 
       {/* Form embed */}
       <section className="bg-white py-14 px-4">
@@ -134,34 +95,7 @@ export default function WhistleblowerPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-            <iframe
-              src="https://forms.gle/yPxEW1ZRJSfqQUyo6"
-              width="100%"
-              height="1100"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="OVAH Whistleblower & Misconduct Reporting Form"
-              className="w-full border-0"
-              loading="lazy"
-            >
-              Loading form…
-            </iframe>
-          </div>
-
-          <p className="mt-4 text-xs text-gray-400 text-center">
-            Having trouble with the form?{" "}
-            <a
-              href="https://forms.gle/yPxEW1ZRJSfqQUyo6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-gray-600"
-            >
-              Open it directly
-            </a>
-            .
-          </p>
+          <WhistleblowerForm />
         </div>
       </section>
 
