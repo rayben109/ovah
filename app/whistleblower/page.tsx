@@ -71,14 +71,16 @@ export default function WhistleblowerPage() {
               <span className="w-10 h-10 rounded-xl bg-[#182858]/10 flex items-center justify-center shrink-0">
                 <Icon className="h-5 w-5 text-[#182858]" />
               </span>
-              <h3 className="font-semibold text-[#182858] text-base">{title}</h3>
+              <h3 className="font-semibold text-[#182858] text-base">
+                {title}
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* What you can report */}
+      {/* What you can report 
       <section className="bg-[#f8fafc] py-12 px-4 border-b border-gray-100">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xl font-bold text-[#182858] mb-4">
@@ -99,8 +101,9 @@ export default function WhistleblowerPage() {
           </ul>
         </div>
       </section>
+      */}
 
-      {/* Warning / disclaimer */}
+      {/* Warning / disclaimer 
       <section className="bg-amber-50 border-y border-amber-100 py-5 px-4">
         <div className="max-w-3xl mx-auto flex gap-3 items-start">
           <AlertTriangle className="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
@@ -116,6 +119,7 @@ export default function WhistleblowerPage() {
           </p>
         </div>
       </section>
+      */}
 
       {/* Form embed */}
       <section className="bg-white py-14 px-4">
