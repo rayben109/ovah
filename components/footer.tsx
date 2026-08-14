@@ -202,6 +202,12 @@ export function Footer() {
               >
                 Terms of Service
               </Link>
+              <Link
+                href="/whistleblower"
+                className="text-primary-foreground/60 hover:text-primary-foreground"
+              >
+                Whistleblower
+              </Link>
             </div>
           </div>
         </div>
