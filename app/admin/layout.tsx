@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { FileText, LogOut, ExternalLink, Signature, CalendarDays, Shield } from "lucide-react"
+import { FileText, LogOut, ExternalLink, Signature, CalendarDays, Shield, Heart } from "lucide-react"
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -50,6 +50,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {navItem("/admin/events",        "Events",          CalendarDays)}
           {navItem("/admin/signature",     "Email Signature", Signature)}
           {navItem("/admin/whistleblower", "Whistleblower",   Shield)}
+          {navItem("/admin/report",       "SGBV Reports",    Heart)}
         </nav>
 
         <div className="p-3 border-t border-gray-100 space-y-1">

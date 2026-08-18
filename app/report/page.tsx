@@ -1,56 +1,91 @@
-import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
-import React from "react"
+import { Footer } from "@/components/footer"
+import { Heart, EyeOff, Shield, PhoneCall } from "lucide-react"
+import ReportForm from "@/components/report/ReportForm"
 
-const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfD2wEXAMPLE/viewform?embedded=true"
+export const metadata = {
+  title: "Report a Case | OVAH Tanzania",
+  description:
+    "A safe, confidential platform for survivors, victims, and bystanders to report incidents of sexual and gender-based violence. Reports can be submitted anonymously.",
+}
+
+const INFO_CARDS = [
+  {
+    icon: EyeOff,
+    title: "Anonymous Reporting",
+    body: "You are not required to provide your name or contact details. Anonymous reports are reviewed with the same care and urgency as identified ones.",
+  },
+  {
+    icon: Shield,
+    title: "Strictly Confidential",
+    body: "Your report is accessible only to trained OVAH case workers. No information is shared with third parties without your explicit consent, except where required by law to prevent immediate harm.",
+  },
+  {
+    icon: PhoneCall,
+    title: "We Follow Up",
+    body: "If you share contact details and consent to follow-up, a case worker will reach out within 2 working days to discuss next steps and connect you to appropriate services.",
+  },
+]
 
 export default function ReportPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="min-h-screen bg-gradient-to-br from-white to-gray-50 flex flex-col items-center py-12">
-        <section className="w-full max-w-2xl bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-          <h1 className="text-3xl font-bold text-primary mb-4 text-center">
+
+      {/* Hero */}
+      <section className="relative bg-[#182858] text-white py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/patterns/dots.svg')] opacity-5 pointer-events-none" />
+        <div className="max-w-3xl mx-auto text-center relative">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+            <Heart className="h-4 w-4 text-[#29A9DF]" />
+            Survivor-Centred Reporting
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Report a Case
           </h1>
-          <p className="text-gray-600 mb-8 text-center">
-            This reporting form is a safe and confidential platform by OVAH for
-            survivors, victims, or bystanders to share incidents of sexual and
-            gender-based violence. It allows individuals to report their
-            experiences, seek guidance, and access support without fear of
-            stigma or retaliation. The form ensures privacy, timely response,
-            and a survivor-centered approach, helping connect users to
-            appropriate services, resources, and trusted channels for protection
-            and justice.
-            <br />
-            <br />
-            <hr />
-            <br />
-            Fomu hii ya taarifa ni sehemu salama na yenye usiri inayotolewa na
-            OVAH kwa waathirika, manusura, au mashuhuda kuripoti matukio ya
-            ukatili wa kijinsia na unyanyasaji. Inawawezesha watu kuripoti
-            kutafuta mwongozo, na kupata msaada bila hofu ya unyanyapaa au
-            kisasi. Fomu hii inalinda faragha yako, inahakikisha unapata msaada
-            wa haraka, na inazingatia mahitaji ya manusura kwa kuunganisha
-            watumiaji na huduma, rasilimali, na njia sahihi za ulinzi na haki.
+          <p className="text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+            This is a safe and confidential platform for survivors, victims, or bystanders
+            to report incidents of sexual and gender-based violence. You can report
+            anonymously and at your own pace.
           </p>
-          <div className="w-full aspect-[3/4]">
-            <iframe
-              src={"https://forms.gle/rT6ia6LeKDeXGHgM8"}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Report Form"
-              className="w-full h-full rounded-lg border border-gray-300"
+          <p className="text-white/60 text-sm mt-4 leading-relaxed max-w-xl mx-auto">
+            Fomu hii ni salama na ya siri kwa waathirika, manusura, au mashuhuda kuripoti
+            matukio ya ukatili wa kijinsia. Unaweza kuripoti bila kutoa jina lako.
+          </p>
+        </div>
+      </section>
+
+      {/* Info cards */}
+      <section className="bg-white py-12 px-4 border-b border-gray-100">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          {INFO_CARDS.map(({ icon: Icon, title, body }) => (
+            <div
+              key={title}
+              className="flex flex-col gap-3 bg-gray-50 rounded-2xl p-6 border border-gray-100"
             >
-              Loading…
-            </iframe>
+              <span className="w-10 h-10 rounded-xl bg-[#182858]/10 flex items-center justify-center shrink-0">
+                <Icon className="h-5 w-5 text-[#182858]" />
+              </span>
+              <h3 className="font-semibold text-[#182858] text-base">{title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Form */}
+      <section className="bg-white py-14 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-[#182858] mb-2">Submit Your Report</h2>
+            <p className="text-gray-500 text-sm">
+              Share as much or as little as you are comfortable with. All fields marked optional can be left blank.
+            </p>
           </div>
-        </section>
-      </main>
+          <ReportForm />
+        </div>
+      </section>
+
       <Footer />
     </div>
   )
