@@ -4,28 +4,23 @@ import path from "path"
 export type SGBVReport = {
   id: string
   submittedAt: string
-  // Reporter
-  reportingFor: "myself" | "someone_else" | "bystander"
-  reporterName?: string
-  reporterAge?: string
-  reporterGender?: string
-  reporterContact?: string
-  reporterDistrict?: string
+  reportingFor: "myself" | "someone_else"
   anonymous: boolean
-  // Incident
-  incidentTypes: string[]
-  otherIncidentType?: string
+  reporterName?: string
+  victimName?: string
+  sex?: "male" | "female"
+  phoneNumber?: string
+  region?: string
   incidentDate?: string
-  incidentLocation?: string
-  incidentDetails: string
-  // Perpetrator (optional)
+  environment?: string
+  environmentOther?: string
   perpetratorRelationship?: string
-  perpetratorDetails?: string
-  // Support
+  perpetratorRelationshipOther?: string
+  violenceTypes: string[]
+  violenceTypesOther?: string
+  incidentDetails: string
   supportNeeded: string[]
-  otherSupport?: string
-  // Follow-up
-  allowContact: boolean
+  supportNeededOther?: string
   status: "new" | "under_review" | "referred" | "closed"
 }
 

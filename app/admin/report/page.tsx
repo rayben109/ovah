@@ -44,6 +44,10 @@ function ReportCard({ report, onUpdate }: { report: SGBVReport; onUpdate: (r: SG
     setUpdating(false)
   }
 
+  const displayName = report.anonymous
+    ? "Anonymous"
+    : report.reporterName || report.victimName || "Identified"
+
   return (
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
       <button
@@ -55,10 +59,10 @@ function ReportCard({ report, onUpdate }: { report: SGBVReport; onUpdate: (r: SG
           {cfg.label}
         </span>
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-[#182858] text-sm">{report.incidentTypes.join(", ")}</p>
+          <p className="font-semibold text-[#182858] text-sm">{report.violenceTypes.join(", ")}</p>
           <p className="text-xs text-gray-400 mt-0.5">
-            {new Date(report.submittedAt).toLocaleString()} · {report.anonymous ? "Anonymous" : report.reporterName || "Identified"}
-            {report.reporterDistrict ? ` · ${report.reporterDistrict}` : ""}
+            {new Date(report.submittedAt).toLocaleString()} · {displayName}
+            {report.region ? ` · ${report.region}` : ""}
           </p>
           <p className="text-sm text-gray-600 mt-1 line-clamp-2">{report.incidentDetails}</p>
         </div>
@@ -67,29 +71,33 @@ function ReportCard({ report, onUpdate }: { report: SGBVReport; onUpdate: (r: SG
 
       {open && (
         <div className="border-t border-gray-100 p-5 space-y-4 bg-gray-50">
-          <div className="grid sm:grid-cols-3 gap-4 text-sm">
-            <Detail label="Reporting for" value={report.reportingFor?.replace("_", " ") ?? "—"} />
-            <Detail label="Incident type(s)" value={report.incidentTypes.join(", ")} />
-            <Detail label="Allow contact" value={report.allowContact ? "Yes" : "No"} />
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Detail label="Reporting for" value={report.reportingFor === "someone_else" ? "Someone else" : "Myself"} />
+            <Detail label="Anonymous" value={report.anonymous ? "Yes" : "No"} />
+            <Detail label="Sex" value={report.sex ?? "—"} />
             {report.incidentDate && <Detail label="Incident date" value={report.incidentDate} />}
-            {report.incidentLocation && <Detail label="Location" value={report.incidentLocation} />}
+            {report.region && <Detail label="Region" value={report.region} />}
+            {report.environment && <Detail label="Environment" value={report.environment + (report.environmentOther ? ` — ${report.environmentOther}` : "")} />}
+            {report.perpetratorRelationship && <Detail label="Perpetrator relationship" value={report.perpetratorRelationship + (report.perpetratorRelationshipOther ? ` — ${report.perpetratorRelationshipOther}` : "")} />}
             <Detail label="Report ID" value={report.id} mono />
           </div>
 
           <div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Details</p>
-            <p className="text-sm text-gray-700 whitespace-pre-wrap bg-white rounded-lg border border-gray-200 p-3">{report.incidentDetails}</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Violence type(s)</p>
+            <div className="flex flex-wrap gap-2">
+              {report.violenceTypes.map(v => (
+                <span key={v} className="px-2.5 py-1 rounded-full bg-red-50 text-red-700 text-xs font-medium">{v}</span>
+              ))}
+              {report.violenceTypesOther && (
+                <span className="px-2.5 py-1 rounded-full bg-red-50 text-red-700 text-xs font-medium">{report.violenceTypesOther}</span>
+              )}
+            </div>
           </div>
 
-          {(report.perpetratorRelationship || report.perpetratorDetails) && (
-            <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Perpetrator</p>
-              <div className="bg-white rounded-lg border border-gray-200 p-3 text-sm text-gray-700 space-y-1">
-                {report.perpetratorRelationship && <p><span className="text-gray-400">Relationship: </span>{report.perpetratorRelationship}</p>}
-                {report.perpetratorDetails && <p><span className="text-gray-400">Details: </span>{report.perpetratorDetails}</p>}
-              </div>
-            </div>
-          )}
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Incident details</p>
+            <p className="text-sm text-gray-700 whitespace-pre-wrap bg-white rounded-lg border border-gray-200 p-3">{report.incidentDetails}</p>
+          </div>
 
           {report.supportNeeded.length > 0 && (
             <div>
@@ -98,16 +106,19 @@ function ReportCard({ report, onUpdate }: { report: SGBVReport; onUpdate: (r: SG
                 {report.supportNeeded.map(s => (
                   <span key={s} className="px-2.5 py-1 rounded-full bg-[#29A9DF]/10 text-[#182858] text-xs font-medium">{s}</span>
                 ))}
+                {report.supportNeededOther && (
+                  <span className="px-2.5 py-1 rounded-full bg-[#29A9DF]/10 text-[#182858] text-xs font-medium">{report.supportNeededOther}</span>
+                )}
               </div>
             </div>
           )}
 
-          {!report.anonymous && (report.reporterName || report.reporterContact) && (
+          {!report.anonymous && (report.reporterName || report.victimName || report.phoneNumber) && (
             <div className="rounded-lg border border-[#29A9DF]/30 bg-[#29A9DF]/5 p-3 text-sm space-y-1">
-              <p className="text-xs font-semibold text-[#182858] uppercase tracking-wide mb-1">Submitter contact</p>
-              {report.reporterName    && <p><span className="text-gray-500">Name: </span>{report.reporterName}{report.reporterAge ? `, age ${report.reporterAge}` : ""}{report.reporterGender ? ` (${report.reporterGender})` : ""}</p>}
-              {report.reporterDistrict && <p><span className="text-gray-500">District: </span>{report.reporterDistrict}</p>}
-              {report.reporterContact && <p><span className="text-gray-500">Contact: </span>{report.reporterContact}</p>}
+              <p className="text-xs font-semibold text-[#182858] uppercase tracking-wide mb-1">Contact details</p>
+              {report.reporterName && <p><span className="text-gray-500">Reporter: </span>{report.reporterName}</p>}
+              {report.victimName   && <p><span className="text-gray-500">Victim: </span>{report.victimName}</p>}
+              {report.phoneNumber  && <p><span className="text-gray-500">Phone: </span><a href={`tel:${report.phoneNumber}`} className="underline text-[#182858]">{report.phoneNumber}</a></p>}
             </div>
           )}
 
