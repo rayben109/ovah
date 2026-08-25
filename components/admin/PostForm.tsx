@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { marked } from "marked"
 import { upload } from "@vercel/blob/client"
+import { compressImage } from "@/lib/compress-image"
 import { BLOG_CATEGORIES, type BlogPost, type BlogCategory } from "@/data/blog"
 import RichTextEditor from "./RichTextEditor"
 import { Upload } from "lucide-react"
@@ -63,7 +64,8 @@ export default function PostForm({ post, mode }: Props) {
     if (!file) return
     setImageUploading(true)
     try {
-      const blob = await upload(file.name, file, {
+      const compressed = await compressImage(file)
+      const blob = await upload(compressed.name, compressed, {
         access: "public",
         handleUploadUrl: "/api/admin/upload",
       })

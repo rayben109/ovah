@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import { upload } from "@vercel/blob/client"
+import { compressImage } from "@/lib/compress-image"
 import { useEditor, EditorContent, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react"
 import type { NodeViewProps } from "@tiptap/react"
 import { Column, Columns } from "./extensions/Columns"
@@ -176,7 +177,8 @@ export default function RichTextEditor({ content, onChange }: Props) {
     if (!file) return
     setUploading(true)
     try {
-      const blob = await upload(file.name, file, {
+      const compressed = await compressImage(file)
+      const blob = await upload(compressed.name, compressed, {
         access: "public",
         handleUploadUrl: "/api/admin/upload",
       })

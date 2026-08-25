@@ -3,6 +3,7 @@
 import { useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { upload } from "@vercel/blob/client"
+import { compressImage } from "@/lib/compress-image"
 import { Upload, Plus, X } from "lucide-react"
 import type { UpcomingEvent, PastEvent } from "@/data/events"
 
@@ -293,7 +294,8 @@ function PastEventForm({ event, mode }: { event?: PastEvent; mode: Mode }) {
     if (!file) return
     setImageUploading(true)
     try {
-      const blob = await upload(file.name, file, {
+      const compressed = await compressImage(file)
+      const blob = await upload(compressed.name, compressed, {
         access: "public",
         handleUploadUrl: "/api/admin/upload",
       })
@@ -313,7 +315,8 @@ function PastEventForm({ event, mode }: { event?: PastEvent; mode: Mode }) {
     try {
       const urls: string[] = []
       for (const file of files) {
-        const blob = await upload(file.name, file, {
+        const compressed = await compressImage(file)
+        const blob = await upload(compressed.name, compressed, {
           access: "public",
           handleUploadUrl: "/api/admin/upload",
         })

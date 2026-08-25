@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client"
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"]
-const MAX_BYTES = 10 * 1024 * 1024 // 10 MB
+const MAX_BYTES = 20 * 1024 * 1024 // 20 MB (client compresses large photos before upload, but leave headroom)
 
 export async function POST(request: Request) {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
