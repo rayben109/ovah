@@ -205,8 +205,8 @@ export function HeroSection() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 animate-pulse" />
 
             <iframe
-              src="https://www.youtube.com/embed/CXNzHYdCTuw?rel=0&modestbranding=1&controls=0"
-              title="OVAH Impact Documentary Preview"
+              src="https://www.youtube.com/embed/CSGoQPoaQjM?start=20&rel=0&modestbranding=1&controls=0"
+              title="Elimika na Mwajuma | #UnyanyasajiwaKijinsianiUkatili - OVAH TANZANIA"
               className="w-full h-full relative z-10"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
