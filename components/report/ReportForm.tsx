@@ -32,7 +32,7 @@ const RELATIONSHIPS = [
   "Family Friend (Rafiki wa Familia)",
   "Peers/Friends (Rafiki)",
   "Stranger (Mtu ambae simfahamu)",
-  "Intimate Partner (Mpenzi)",
+  "Intimate Partner or Spouse (Mpenzi au Mwenza)",
   "Other",
 ]
 
@@ -51,8 +51,8 @@ const VIOLENCE_TYPES = [
 const SUPPORT_OPTIONS = [
   "Wants to talk to a therapist/psychologist (Unahitaji kuongea na mtaalamu/mwanasaikolojia)",
   "Legal advice or assistance (Nahitaji msaada wa kisheria)",
-  "To share my experience and you may post via social media anonymously to encourage other girls to speak up (Ku-share nyanyaso langu bila kuweka wazi jina langu)",
-  "To share my experience and you may post via social media with my name to encourage other girls to speak up (Ku-share nyanyaso langu na kubainisha jina langu)",
+ // "To share my experience and you may post via social media anonymously to encourage other girls to speak up (Ku-share nyanyaso langu bila kuweka wazi jina langu)",
+  //"To share my experience and you may post via social media with my name to encourage other girls to speak up (Ku-share nyanyaso langu na kubainisha jina langu)",
   "Other",
 ]
 
