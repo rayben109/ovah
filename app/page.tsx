@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { FeaturedProjects } from "@/components/featured-projects"
 import { AboutSection } from "@/components/about-section"
 import { GallerySection } from "@/components/gallery-section"
+import { VideoHighlightSection } from "@/components/video-highlight-section"
 import { ApproachesSection } from "@/components/approaches-section"
 import { ImpactSection } from "@/components/impact-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
@@ -18,6 +19,7 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         <GallerySection />
+        <VideoHighlightSection />
         <ApproachesSection />
         <ImpactSection />
          <FeaturedProjects />

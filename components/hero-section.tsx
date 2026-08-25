@@ -205,7 +205,7 @@ export function HeroSection() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 animate-pulse" />
 
             <iframe
-              src="https://www.youtube.com/embed/LPTqhEhG17k?rel=0&modestbranding=1&controls=0"
+              src="https://www.youtube.com/embed/CXNzHYdCTuw?rel=0&modestbranding=1&controls=0"
               title="OVAH Impact Documentary Preview"
               className="w-full h-full relative z-10"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -334,7 +334,7 @@ export function HeroSection() {
                 <X className="h-6 w-6" />
               </button>
               <iframe
-                src="https://www.youtube.com/embed/LPTqhEhG17k?autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/CXNzHYdCTuw?autoplay=1&rel=0"
                 title="OVAH Impact Documentary"
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
