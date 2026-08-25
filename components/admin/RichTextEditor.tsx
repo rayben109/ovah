@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
+import { upload } from "@vercel/blob/client"
 import { useEditor, EditorContent, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react"
 import type { NodeViewProps } from "@tiptap/react"
 import { Column, Columns } from "./extensions/Columns"
@@ -175,14 +176,14 @@ export default function RichTextEditor({ content, onChange }: Props) {
     if (!file) return
     setUploading(true)
     try {
-      const fd = new FormData()
-      fd.append("file", file)
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd })
-      const data = await res.json()
-      if (data.url) {
-        editor!.chain().focus().setImage({ src: data.url, alt: file.name.replace(/\.[^.]+$/, "") }).run()
-        setImgPanel(false)
-      }
+      const blob = await upload(file.name, file, {
+        access: "public",
+        handleUploadUrl: "/api/admin/upload",
+      })
+      editor!.chain().focus().setImage({ src: blob.url, alt: file.name.replace(/\.[^.]+$/, "") }).run()
+      setImgPanel(false)
+    } catch (err) {
+      window.alert(err instanceof Error ? err.message : "Image upload failed.")
     } finally {
       setUploading(false)
       e.target.value = ""

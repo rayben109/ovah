@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react"
 import { useRouter } from "next/navigation"
+import { upload } from "@vercel/blob/client"
 import { Upload, Plus, X } from "lucide-react"
 import type { UpcomingEvent, PastEvent } from "@/data/events"
 
@@ -292,11 +293,13 @@ function PastEventForm({ event, mode }: { event?: PastEvent; mode: Mode }) {
     if (!file) return
     setImageUploading(true)
     try {
-      const fd = new FormData()
-      fd.append("file", file)
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd })
-      const data = await res.json()
-      if (data.url) set("image", data.url)
+      const blob = await upload(file.name, file, {
+        access: "public",
+        handleUploadUrl: "/api/admin/upload",
+      })
+      set("image", blob.url)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Image upload failed.")
     } finally {
       setImageUploading(false)
       e.target.value = ""
@@ -310,13 +313,15 @@ function PastEventForm({ event, mode }: { event?: PastEvent; mode: Mode }) {
     try {
       const urls: string[] = []
       for (const file of files) {
-        const fd = new FormData()
-        fd.append("file", file)
-        const res = await fetch("/api/admin/upload", { method: "POST", body: fd })
-        const data = await res.json()
-        if (data.url) urls.push(data.url)
+        const blob = await upload(file.name, file, {
+          access: "public",
+          handleUploadUrl: "/api/admin/upload",
+        })
+        urls.push(blob.url)
       }
       setForm((f) => ({ ...f, gallery: [...(f.gallery ?? []), ...urls] }))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Image upload failed.")
     } finally {
       setGalleryUploading(false)
       e.target.value = ""

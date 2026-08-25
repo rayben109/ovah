@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { marked } from "marked"
+import { upload } from "@vercel/blob/client"
 import { BLOG_CATEGORIES, type BlogPost, type BlogCategory } from "@/data/blog"
 import RichTextEditor from "./RichTextEditor"
 import { Upload } from "lucide-react"
@@ -62,11 +63,13 @@ export default function PostForm({ post, mode }: Props) {
     if (!file) return
     setImageUploading(true)
     try {
-      const fd = new FormData()
-      fd.append("file", file)
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd })
-      const data = await res.json()
-      if (data.url) set("image", data.url)
+      const blob = await upload(file.name, file, {
+        access: "public",
+        handleUploadUrl: "/api/admin/upload",
+      })
+      set("image", blob.url)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Image upload failed.")
     } finally {
       setImageUploading(false)
       e.target.value = ""
