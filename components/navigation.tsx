@@ -13,8 +13,9 @@ export function Navigation() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Our Work", href: "/our-work" },
-     { name: "Updates", href: "/blog" }, 
+    { name: "Updates", href: "/blog" },
     { name: "Events", href: "/events" },
+    { name: "Opportunities", href: "/opportunities" },
     { name: "Contact Us", href: "/contact" },
     { name: "Report", href: "/report" },
   ]
@@ -51,8 +52,17 @@ export function Navigation() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-foreground">
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground"
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
