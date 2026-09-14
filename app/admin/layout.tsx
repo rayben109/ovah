@@ -3,9 +3,23 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { FileText, LogOut, ExternalLink, Signature, CalendarDays, Shield, Heart, TrendingUp } from "lucide-react"
+import {
+  FileText,
+  LogOut,
+  ExternalLink,
+  Signature,
+  CalendarDays,
+  Shield,
+  Heart,
+  TrendingUp,
+  BriefcaseBusiness,
+} from "lucide-react"
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -17,15 +31,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push("/admin/login")
   }
 
-  const navItem = (href: string, label: string, Icon: React.FC<{ className?: string }>) => {
+  const navItem = (
+    href: string,
+    label: string,
+    Icon: React.FC<{ className?: string }>,
+  ) => {
     const active = pathname.startsWith(href)
     return (
       <Link
         href={href}
         className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition ${
-          active
-            ? "bg-[#182858] text-white"
-            : "text-gray-600 hover:bg-gray-100"
+          active ? "bg-[#182858] text-white" : "text-gray-600 hover:bg-gray-100"
         }`}
       >
         <Icon className="h-4 w-4" />
@@ -46,12 +62,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         <nav className="flex-1 p-3 space-y-1">
-          {navItem("/admin/blog",          "Blog Posts",      FileText)}
-          {navItem("/admin/events",        "Events",          CalendarDays)}
-          {navItem("/admin/signature",     "Email Signature", Signature)}
-          {navItem("/admin/whistleblower", "Whistleblower",   Shield)}
-          {navItem("/admin/report",       "SGBV Reports",    Heart)}
-          {navItem("/admin/pbi",         "PBI Investors",   TrendingUp)}
+          {navItem("/admin/blog", "Blog Posts", FileText)}
+          {navItem("/admin/events", "Events", CalendarDays)}
+          {navItem("/admin/opportunities", "Opportunities", BriefcaseBusiness)}
+          {navItem("/admin/signature", "Email Signature", Signature)}
+          {navItem("/admin/whistleblower", "Whistleblower", Shield)}
+          {navItem("/admin/report", "SGBV Reports", Heart)}
+          {navItem("/admin/pbi", "PBI Investors", TrendingUp)}
         </nav>
 
         <div className="p-3 border-t border-gray-100 space-y-1">
