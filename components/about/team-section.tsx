@@ -21,18 +21,17 @@ export function TeamSection() {
       linkedin: "https://linkedin.com/in/",
     },
     {
-      name: "Carina Wolfram",
-      role: "MEL Manager",
+      name: "Ezira Sansi",
+      role: "MEL Officer",
       imageUrl: "/images/team/placeholder.jpg",
       linkedin: "https://linkedin.com/in/",
     },
-    {
+    /* {
       name: "Jacqueline Octavian",
       role: "Comms and Advocacy Officer",
-      
       imageUrl: "/images/team/jacqueline-octavian-comms.jpg",
       linkedin: "https://linkedin.com/in/",
-    },
+    }, */
     {
       name: "Alfred Rabson",
       role: "Finance Officer",

@@ -73,7 +73,6 @@ export function Footer() {
                 "Our Work",
                 "Approaches",
                 "Blog",
-                "Events",
                 "Contact",
               ].map((link) => (
                 <li key={link}>

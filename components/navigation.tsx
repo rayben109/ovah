@@ -14,7 +14,6 @@ export function Navigation() {
     { name: "About Us", href: "/about" },
     { name: "Our Work", href: "/our-work" },
     { name: "Updates", href: "/blog" },
-    { name: "Events", href: "/events" },
     { name: "Opportunities", href: "/opportunities" },
     { name: "Contact Us", href: "/contact" },
     { name: "Report", href: "/report" },
